@@ -483,7 +483,116 @@ TAB_IMP_TOPICS_HTML = """
         <a href="https://www.google.com/search?tbm=isch&q=Fog+Computing+Architecture+IoT+Edge+Cloud+Diagram" target="_blank" class="btn btn-sm">🔍 View Diagrams on Google</a>
         <button class="btn btn-sm btn-primary" onclick="switchTab('unit1');">📖 Open Unit 1 Notes</button>
       </div>
+    
+
+    <!-- IMP 15: Virtualization in Depth (10 Marks) -->
+    <div class="imp-card tier-1" data-tier="tier1" data-marks="10m">
+      <div class="imp-header">
+        <div class="imp-title">15. Comprehensive Virtualization Architecture & Intel VT-x Hardware Assist</div>
+        <div class="imp-tags">
+          <span class="badge badge-priority">Unit 4 · 10 Marks</span>
+          <span class="badge" style="background-color: var(--danger-bg); color: var(--danger); font-weight: 700;">98% Probability</span>
+        </div>
+      </div>
+      <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 0.6rem;">
+        <strong>Question Format:</strong> <em>"Explain the architecture of virtualization in cloud computing. Compare Full Virtualization, Paravirtualization, and Hardware-Assisted Virtualization with neat diagrams. Explain Popek-Goldberg theorem and Intel VT-x VMX Root/Non-Root modes."</em>
+      </p>
+      <div class="def-box" style="margin: 0.5rem 0; font-size: 0.88rem;">
+        <strong>4-Point Answer Blueprint:</strong>
+        <ul style="margin: 0.35rem 0 0.35rem 1.2rem; font-size: 0.85rem;">
+          <li><strong>Popek-Goldberg Theorem:</strong> An architecture is strictly virtualizable iff all sensitive instructions are a subset of privileged instructions (Sensitive &sube; Privileged). x86 had 17 sensitive unprivileged instructions (the x86 virtualization hole).</li>
+          <li><strong>3 CPU Virtualization Models:</strong> 1) Full Virtualization (Binary translation of sensitive instructions), 2) Paravirtualization (Guest OS modified with Hypercalls), 3) Hardware-Assisted (Silicon traps via Intel VT-x / AMD-V).</li>
+          <li><strong>Intel VT-x VMX Modes:</strong> VMX Root Mode (Hypervisor full control) and VMX Non-Root Mode (Guest OS). Traps trigger hardware <strong>VM-Exit</strong>; hypervisor resumes VM with <strong>VM-Entry</strong> via <code>VMRESUME</code>. Extended Page Tables (EPT) handle hardware memory virtualization.</li>
+          <li><strong>Three Virtualization Domains:</strong> Compute (vCPUs/RAM overcommit), Storage (LVM, SAN pools, Ceph), and Network Virtualization (vSwitches, VXLAN 24-bit overlay tunnels).</li>
+        </ul>
+      </div>
+      <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.6rem;">
+        <a href="https://www.google.com/search?tbm=isch&q=Compute+Storage+Network+Virtualization+Hardware+Assisted+Intel+VT+Diagram" target="_blank" class="btn btn-sm">🔍 View Diagrams on Google</a>
+        <button class="btn btn-sm btn-primary" onclick="switchTab('qbank'); filterQBank('10m', null);">📝 View 10M Model Answer</button>
+      </div>
     </div>
+
+    <!-- IMP 16: AWS IAM Enterprise Security Architecture (10 Marks) -->
+    <div class="imp-card tier-1" data-tier="tier1" data-marks="10m">
+      <div class="imp-header">
+        <div class="imp-title">16. AWS IAM Enterprise Architecture & 6-Step Policy Evaluation Algorithm</div>
+        <div class="imp-tags">
+          <span class="badge badge-priority">Unit 5 · 10 Marks</span>
+          <span class="badge" style="background-color: var(--danger-bg); color: var(--danger); font-weight: 700;">99% Probability</span>
+        </div>
+      </div>
+      <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 0.6rem;">
+        <strong>Question Format:</strong> <em>"Discuss AWS IAM Enterprise Security Architecture. Detail the 4 core entities, JSON policy grammar, the 6-step policy evaluation algorithm, and explain why Explicit Deny is absolute."</em>
+      </p>
+      <div class="def-box" style="margin: 0.5rem 0; font-size: 0.88rem;">
+        <strong>4-Point Answer Blueprint:</strong>
+        <ul style="margin: 0.35rem 0 0.35rem 1.2rem; font-size: 0.85rem;">
+          <li><strong>Core Entities:</strong> Users (long-term human credentials), User Groups (batch permission sets), Roles (temporary identities assumed by EC2/Lambda with STS tokens), Policies (JSON permission documents).</li>
+          <li><strong>JSON Grammar:</strong> <code>Version</code> ("2012-10-17"), <code>Statement</code>, <code>Effect</code> (Allow/Deny), <code>Principal</code>, <code>Action</code>, <code>Resource</code> (ARN), and <code>Condition</code> (MFA, Source IP CIDR).</li>
+          <li><strong>6-Step Evaluation Engine:</strong> 1) Default Implicit Deny &rarr; 2) <strong>Explicit Deny Check</strong> (If any policy statement denies, evaluate halts immediately and returns DENY) &rarr; 3) SCP Check &rarr; 4) Resource-based Policy Check &rarr; 5) IAM Permissions Boundary & Identity Policy Check &rarr; 6) Final Allow/Deny.</li>
+          <li><strong>AWS STS Token Generation:</strong> <code>AssumeRole</code> issues temporary credentials (<code>AccessKeyId</code> starting with <code>ASIA</code>, <code>SecretAccessKey</code>, <code>SessionToken</code>) with 1-hour auto-expiration.</li>
+        </ul>
+      </div>
+      <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.6rem;">
+        <a href="https://www.google.com/search?tbm=isch&q=AWS+IAM+Policy+Evaluation+Logic+Flowchart+Diagram" target="_blank" class="btn btn-sm">🔍 View Diagrams on Google</a>
+        <button class="btn btn-sm btn-primary" onclick="switchTab('qbank'); filterQBank('10m', null);">📝 View 10M Model Answer</button>
+      </div>
+    </div>
+
+    <!-- IMP 17: Enterprise Multi-Server 3-Tier Web Architecture (10 Marks) -->
+    <div class="imp-card tier-2" data-tier="tier2" data-marks="10m">
+      <div class="imp-header">
+        <div class="imp-title">17. Enterprise Multi-Server 3-Tier Web Architecture & High Availability Math</div>
+        <div class="imp-tags">
+          <span class="badge badge-accent">Unit 3 · 10 Marks</span>
+          <span class="badge" style="background-color: var(--warning-bg); color: var(--warning); font-weight: 700;">95% Probability</span>
+        </div>
+      </div>
+      <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 0.6rem;">
+        <strong>Question Format:</strong> <em>"Design a highly available 3-Tier Web Architecture on Cloud. Contrast Layer 4 (NLB) vs Layer 7 (ALB) Load Balancing, calculate Serial vs Parallel Availability SLA, and discuss Disaster Recovery strategies (RTO/RPO)."</em>
+      </p>
+      <div class="def-box" style="margin: 0.5rem 0; font-size: 0.88rem;">
+        <strong>4-Point Answer Blueprint:</strong>
+        <ul style="margin: 0.35rem 0 0.35rem 1.2rem; font-size: 0.85rem;">
+          <li><strong>3 VPC Tiers:</strong> Tier 1: Web Presentation (Public subnet, Internet Gateway, ALB terminating SSL, Nginx). Tier 2: Application Logic (Private subnet, NAT Gateway, stateless microservices in Auto Scaling Group, Redis cache). Tier 3: Database Persistence (Isolated subnet, Multi-AZ Primary R/W Master with Read-Replicas).</li>
+          <li><strong>Layer 4 vs Layer 7 Load Balancing:</strong> NLB (L4) routes by TCP/UDP port at wire speed (millions RPS, static IP). ALB (L7) performs deep HTTP packet inspection (path routing <code>/api</code> vs <code>/static</code>, host headers, cookie sticky sessions).</li>
+          <li><strong>High Availability Mathematics:</strong> Serial components multiply availabilities: $A_{\text{system}} = A_1 \times A_2$ (99% &times; 99% = 98.01%). Parallel redundant components: $A_{\text{system}} = 1 - (1 - A_1)(1 - A_2)$ (Two 99% servers in parallel = 99.99% 'Four Nines'!).</li>
+          <li><strong>Disaster Recovery RTO & RPO:</strong> Backup & Restore (RTO: Days, Lowest cost) &rarr; Pilot Light (RTO: Hours, Core DB replicating) &rarr; Warm Standby (RTO: Minutes, Scaled-down fleet) &rarr; Multi-Region Active-Active (RTO: Zero, Highest cost).</li>
+        </ul>
+      </div>
+      <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.6rem;">
+        <a href="https://www.google.com/search?tbm=isch&q=Three+Tier+Cloud+Web+Architecture+AWS+Diagram" target="_blank" class="btn btn-sm">🔍 View Diagrams on Google</a>
+        <button class="btn btn-sm btn-primary" onclick="switchTab('qbank'); filterQBank('10m', null);">📝 View 10M Model Answer</button>
+      </div>
+    </div>
+
+    <!-- IMP 18: Cloud Storage Architectures & CAP Theorem (10 Marks) -->
+    <div class="imp-card tier-1" data-tier="tier1" data-marks="10m">
+      <div class="imp-header">
+        <div class="imp-title">18. Cloud Storage Architectures: Block vs Object vs File & 11-Nines Durability Math</div>
+        <div class="imp-tags">
+          <span class="badge badge-priority">Unit 4 · 10 Marks</span>
+          <span class="badge" style="background-color: var(--danger-bg); color: var(--danger); font-weight: 700;">92% Probability</span>
+        </div>
+      </div>
+      <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 0.6rem;">
+        <strong>Question Format:</strong> <em>"Compare Block, Object, and File Storage on 8 parameters. Explain the mathematics of 11-Nines S3 durability, Erasure Coding, and analyze distributed consistency via the CAP Theorem."</em>
+      </p>
+      <div class="def-box" style="margin: 0.5rem 0; font-size: 0.88rem;">
+        <strong>4-Point Answer Blueprint:</strong>
+        <ul style="margin: 0.35rem 0 0.35rem 1.2rem; font-size: 0.85rem;">
+          <li><strong>Tri-Storage Paradigms:</strong> Block (AWS EBS): Raw sectors, iSCSI/NVMe-oF, ultra-low latency, in-place byte writes (OS boot/DBs). Object (AWS S3): Flat namespace, HTTP REST (GET/PUT), immutable payloads, petabyte scale (Data lakes/media). File (AWS EFS): POSIX directory tree, NFSv4, concurrent multi-instance read/write.</li>
+          <li><strong>11-Nines (99.999999999%) Durability Math:</strong> Storing 10,000,000 objects in S3 loses statistically 1 object every 10,000 years! Annual loss probability is $10^{-11}$. Achieved via multi-AZ replication across 3+ independent geographical failure zones and Reed-Solomon Erasure Coding.</li>
+          <li><strong>CAP Theorem:</strong> Distributed data systems can guarantee at most 2 of 3: Consistency (C), Availability (A), Partition Tolerance (P). Network partitions (P) are inevitable in physical cables; systems must choose CP (HBase) or AP (Cassandra). S3 delivers Strong Read-After-Write Consistency.</li>
+          <li><strong>S3 Storage Lifecycle Tiers:</strong> S3 Standard &rarr; S3 Standard-IA (Infrequent Access) &rarr; Glacier Flexible Retrieval &rarr; Glacier Deep Archive ($0.00099/GB/mo for 10-year tape replacement).</li>
+        </ul>
+      </div>
+      <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.6rem;">
+        <a href="https://www.google.com/search?tbm=isch&q=Block+vs+File+vs+Object+Storage+Cloud+Diagram" target="_blank" class="btn btn-sm">🔍 View Diagrams on Google</a>
+        <button class="btn btn-sm btn-primary" onclick="switchTab('qbank'); filterQBank('10m', null);">📝 View 10M Model Answer</button>
+      </div>
+    </div>
+</div>
 
   </div>
 </div>
