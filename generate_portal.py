@@ -163,7 +163,7 @@ FULL_HTML = f"""<!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>BTCS701F: Cloud Computing — Master Exam Portal (GSFC University)</title>
   <style>
 {CSS_CODE}
@@ -171,30 +171,41 @@ FULL_HTML = f"""<!DOCTYPE html>
 </head>
 <body>
 
+  <!-- Backdrop for Mobile Slide-Out Drawer -->
+  <div class="sidebar-backdrop" id="sidebarBackdrop" onclick="closeMobileNav()"></div>
+
   <!-- Top Header Navigation -->
   <header>
-    <a href="#" class="brand" onclick="switchTab('overview'); return false;">
-      <div class="brand-logo">CC</div>
-      <div class="brand-text">
-        <h1>Cloud Computing (BTCS701F)</h1>
-        <p>GSFC University · Master Exam Portal · 100% CC Aligned</p>
-      </div>
-    </a>
+    <div class="header-left">
+      <button class="mobile-menu-btn" onclick="toggleMobileNav()" title="Open Navigation Menu" aria-label="Toggle navigation menu">☰</button>
+      <a href="#" class="brand" onclick="switchTab('overview'); return false;">
+        <div class="brand-logo">CC</div>
+        <div class="brand-text">
+          <h1>Cloud Computing (BTCS701F)</h1>
+          <p>GSFC University · Master Exam Portal · 100% CC Aligned</p>
+        </div>
+      </a>
+    </div>
 
     <div class="header-controls">
       <div class="search-box">
         <span class="search-icon">🔍</span>
-        <input type="text" id="globalSearchInput" placeholder="Search topics, IAM, Docker, SDN..." oninput="handleLiveSearch(this.value)">
+        <input type="text" id="globalSearchInput" placeholder="Search topics, IAM..." oninput="handleLiveSearch(this.value)">
       </div>
 
       <button class="btn btn-icon" id="themeToggleBtn" onclick="toggleTheme()" title="Toggle Dark/Light Mode">🌙</button>
-      <button class="btn btn-primary" onclick="window.print()" title="Print / Save Notes as PDF">🖨️ Print Notes</button>
+      <button class="btn btn-primary btn-print-hide" onclick="window.print()" title="Print / Save Notes as PDF">🖨️ Print Notes</button>
     </div>
   </header>
 
   <div class="app-container">
     <!-- Sidebar Navigation -->
     <aside>
+      <div class="sidebar-mobile-header">
+        <div class="sidebar-mobile-title">Course Navigation</div>
+        <button class="sidebar-close-btn" onclick="closeMobileNav()" aria-label="Close menu">&times;</button>
+      </div>
+
       <div class="sidebar-title">Core Navigation</div>
       
       <div class="nav-item active" id="nav-overview" onclick="switchTab('overview')">
@@ -298,6 +309,30 @@ FULL_HTML = f"""<!DOCTYPE html>
       {TAB_QBANK_HTML}
     </main>
   </div>
+
+  <!-- Mobile Sticky Bottom Navigation Bar -->
+  <nav class="mobile-bottom-nav">
+    <button class="bottom-nav-item active" id="bnav-overview" onclick="switchTab('overview')">
+      <span class="bnav-icon">🏠</span>
+      <span class="bnav-label">Home</span>
+    </button>
+    <button class="bottom-nav-item" id="bnav-units" onclick="toggleMobileNav()">
+      <span class="bnav-icon">📚</span>
+      <span class="bnav-label">Units</span>
+    </button>
+    <button class="bottom-nav-item" id="bnav-comparisons" onclick="switchTab('comparisons')">
+      <span class="bnav-icon">📊</span>
+      <span class="bnav-label">Compare</span>
+    </button>
+    <button class="bottom-nav-item" id="bnav-quiz" onclick="switchTab('quiz')">
+      <span class="bnav-icon">🎯</span>
+      <span class="bnav-label">MCQs</span>
+    </button>
+    <button class="bottom-nav-item" id="bnav-flashcards" onclick="switchTab('flashcards')">
+      <span class="bnav-icon">🗂️</span>
+      <span class="bnav-label">Cards</span>
+    </button>
+  </nav>
 
   <script>
 {JS_CODE}

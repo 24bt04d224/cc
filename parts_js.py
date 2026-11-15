@@ -9,14 +9,46 @@ document.documentElement.setAttribute('data-theme', currentTheme);
 function switchTab(tabId) {
   document.querySelectorAll('.tab-pane').forEach(el => el.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.bottom-nav-item').forEach(el => el.classList.remove('active'));
   
   const targetTab = document.getElementById(tabId);
   const targetNav = document.getElementById('nav-' + tabId);
+  const targetBottomNav = document.getElementById('bnav-' + tabId);
   
   if (targetTab) targetTab.classList.add('active');
   if (targetNav) targetNav.classList.add('active');
+  if (targetBottomNav) {
+    targetBottomNav.classList.add('active');
+  } else if (tabId.startsWith('unit')) {
+    const unitsBnav = document.getElementById('bnav-units');
+    if (unitsBnav) unitsBnav.classList.add('active');
+  }
   
+  closeMobileNav();
   window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Mobile Drawer Navigation
+function toggleMobileNav() {
+  const sidebar = document.querySelector('aside');
+  const backdrop = document.getElementById('sidebarBackdrop');
+  if (!sidebar) return;
+  const isOpen = sidebar.classList.contains('drawer-open');
+  if (isOpen) {
+    closeMobileNav();
+  } else {
+    sidebar.classList.add('drawer-open');
+    if (backdrop) backdrop.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+function closeMobileNav() {
+  const sidebar = document.querySelector('aside');
+  const backdrop = document.getElementById('sidebarBackdrop');
+  if (sidebar) sidebar.classList.remove('drawer-open');
+  if (backdrop) backdrop.classList.remove('active');
+  document.body.style.overflow = '';
 }
 
 // Theme Toggle
