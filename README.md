@@ -40,16 +40,25 @@ A comprehensive, self-contained Cloud Computing examination preparation and stud
 
 ---
 
-## 🚀 How to Enable GitHub Pages (Free Hosting)
+## 🚀 Deploying Live with Free Domains
 
-1. Open this repository on GitHub: [github.com/24bt04d224/cc](https://github.com/24bt04d224/cc)
-2. Go to **Settings** ➔ **Pages** (in the left sidebar).
-3. Under **Build and deployment**:
-   - **Source:** Select `Deploy from a branch`
-   - **Branch:** Select `main` and folder `/(root)`
+### Option A: GitHub Pages (Automatic CI/CD via GitHub Actions)
+1. Open [github.com/24bt04d224/cc/settings/pages](https://github.com/24bt04d224/cc/settings/pages).
+2. Under **Build and deployment**:
+   - **Source:** Select `GitHub Actions` (or `Deploy from a branch` -> `main` / `root`).
    - Click **Save**.
-4. Within 1 minute, your website will be live at:
+3. Within 30–60 seconds, your site is published at:
    👉 **[https://24bt04d224.github.io/cc/](https://24bt04d224.github.io/cc/)**
+
+### Option B: Vercel (1-Click Deployment)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2F24bt04d224%2Fcc)
+1. Click the button above or visit: **[Deploy to Vercel](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2F24bt04d224%2Fcc)**
+2. Sign in with GitHub and click **Deploy**.
+3. Live in 15 seconds at: `https://cc-...vercel.app`
+
+### Option C: Instant Live Mirror
+- Mobile Quicklink: **[tinyurl.com/263ku7h8](https://tinyurl.com/263ku7h8)**
+- Direct HTTPS Mirror: **[files.catbox.moe/e7k04r.html](https://files.catbox.moe/e7k04r.html)**
 
 ---
 
