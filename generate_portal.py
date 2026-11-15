@@ -10,6 +10,7 @@ from parts_unit5 import TAB_UNIT5_HTML
 from parts_comparisons import TAB_COMPARISONS_HTML
 from parts_quiz_flashcards import TAB_FLASHCARDS_HTML, TAB_QUIZ_HTML
 from parts_qbank import TAB_QBANK_HTML
+from parts_power_modes import TAB_RANDOM_TOPICS_HTML, TAB_IMP_TOPICS_HTML, TAB_RANDOM_QUESTIONS_HTML
 from parts_js import JS_CODE
 
 OVERVIEW_HTML = """
@@ -26,7 +27,7 @@ OVERVIEW_HTML = """
     <p class="hero-desc">
       Welcome to your comprehensive, all-in-one Cloud Computing examination preparation portal.
       This platform consolidates 100% of your university syllabus (BTCS701F), complete lecture slide decks (Units 1–5),
-      and dedicated AWS IAM slide notes by Prof. Amin Shaikh. All Mobile Application Development (MAD) material has been completely removed.
+      and dedicated AWS IAM slide notes by Prof. Amin Shaikh. Strictly focused on Cloud Computing theory, architecture, and university exams.
     </p>
   </div>
 
@@ -58,6 +59,45 @@ OVERVIEW_HTML = """
       <div class="stat-info">
         <h3>36 Cards</h3>
         <p>3D Flip Revision Cards</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- High-Yield Exam Power Modes Card -->
+  <div class="topic-card" style="border-color: rgba(56, 189, 248, 0.4); background: linear-gradient(135deg, rgba(56, 189, 248, 0.05), rgba(168, 85, 247, 0.05));">
+    <div class="topic-header">
+      <div class="topic-title">⚡ High-Yield Exam Power Modes (Rapid Revision Tools)</div>
+      <span class="badge badge-accent">Interactive Revision</span>
+    </div>
+    <p style="color: var(--text-secondary); margin-bottom: 1.15rem; font-size: 0.92rem;">
+      Accelerate your revision with active recall and targeted exam-readiness tools. Choose your study mode:
+    </p>
+    <div class="grid-3" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem;">
+      <div class="subcard" style="cursor: pointer; transition: transform 0.2s, border-color 0.2s; border-left: 4px solid var(--accent);" onclick="switchTab('random-topics')">
+        <div style="font-size: 1.5rem; margin-bottom: 0.4rem;">🎲</div>
+        <h4 style="color: var(--accent); margin-bottom: 0.4rem;">1. Random Topic Shuffler</h4>
+        <p style="font-size: 0.84rem; color: var(--text-secondary); margin-bottom: 0.75rem;">
+          Shuffle through 140+ core curriculum topics across all 5 units for active recall drills. Includes real-world analogies & diagram links.
+        </p>
+        <span class="badge badge-accent">Launch Shuffler &rarr;</span>
+      </div>
+
+      <div class="subcard" style="cursor: pointer; transition: transform 0.2s, border-color 0.2s; border-left: 4px solid var(--danger);" onclick="switchTab('imp-topics')">
+        <div style="font-size: 1.5rem; margin-bottom: 0.4rem;">⭐</div>
+        <h4 style="color: var(--danger); margin-bottom: 0.4rem;">2. Master IMP Topics (Top 30)</h4>
+        <p style="font-size: 0.84rem; color: var(--text-secondary); margin-bottom: 0.75rem;">
+          100% exam-guaranteed questions. Units 4 & 5 (50% marks) prioritized with exact question formats, marks, and 4-point blueprints.
+        </p>
+        <span class="badge badge-priority">View IMP List &rarr;</span>
+      </div>
+
+      <div class="subcard" style="cursor: pointer; transition: transform 0.2s, border-color 0.2s; border-left: 4px solid var(--success);" onclick="switchTab('random-questions')">
+        <div style="font-size: 1.5rem; margin-bottom: 0.4rem;">❓</div>
+        <h4 style="color: var(--success); margin-bottom: 0.4rem;">3. Question Roulette (All Units)</h4>
+        <p style="font-size: 0.84rem; color: var(--text-secondary); margin-bottom: 0.75rem;">
+          Cross-chapter exam simulator with 2M, 5M, 7M, and 10M questions. Hidden answers with instant model answer reveals & grading tips.
+        </p>
+        <span class="badge" style="background: var(--success-bg); color: var(--success);">Start Roulette &rarr;</span>
       </div>
     </div>
   </div>
@@ -216,6 +256,32 @@ FULL_HTML = f"""<!DOCTYPE html>
         <span class="badge">Blueprint</span>
       </div>
 
+      <div class="sidebar-title">🎯 Exam Power Modes</div>
+      
+      <div class="nav-item" id="nav-random-topics" onclick="switchTab('random-topics')">
+        <div class="nav-item-left">
+          <span>🎲</span>
+          <span>Random Topics</span>
+        </div>
+        <span class="badge badge-accent">Recall</span>
+      </div>
+
+      <div class="nav-item" id="nav-imp-topics" onclick="switchTab('imp-topics')">
+        <div class="nav-item-left">
+          <span>⭐</span>
+          <span>IMP Topics (Top 30)</span>
+        </div>
+        <span class="badge badge-priority">100% Exam</span>
+      </div>
+
+      <div class="nav-item" id="nav-random-questions" onclick="switchTab('random-questions')">
+        <div class="nav-item-left">
+          <span>❓</span>
+          <span>Question Roulette</span>
+        </div>
+        <span class="badge">Cross-Unit</span>
+      </div>
+
       <div class="sidebar-title">High-Weightage Units (50%)</div>
       
       <div class="nav-item" id="nav-unit4" onclick="switchTab('unit4')">
@@ -298,6 +364,9 @@ FULL_HTML = f"""<!DOCTYPE html>
     <!-- Main Content Panes -->
     <main>
       {OVERVIEW_HTML}
+      {TAB_RANDOM_TOPICS_HTML}
+      {TAB_IMP_TOPICS_HTML}
+      {TAB_RANDOM_QUESTIONS_HTML}
       {TAB_UNIT1_HTML}
       {TAB_UNIT2_HTML}
       {TAB_UNIT3_HTML}

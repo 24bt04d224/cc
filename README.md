@@ -28,15 +28,20 @@ A comprehensive, self-contained Cloud Computing examination preparation and stud
 
 ## ✨ Features
 
+- 🎲 **Random Topic Shuffler & Active Recall:** Eliminate predictable study patterns with an interactive topic roller across all 140 syllabus concepts, complete with real-world analogies and Google Images diagram links.
+- ⭐ **Master IMP Topics (Top 30 Guaranteed):** Curated high-yield examination priority list (Units 4 & 5 - 50% Marks focus) featuring exact question formats, mark allocations, and 4-point blueprints.
+- ❓ **Cross-Chapter Question Roulette:** Interactive exam simulator testing 2M definitions, 5M short notes, 7M comparisons, and 10M architectural questions with hidden model answers and instant reveals.
+- 📸 **Google Images Diagram Reference Bars:** Every major architecture diagram features direct 1-click visual search buttons to official Google Image search diagrams and Wikipedia references.
+- 📱 **100% Responsive & Mobile Optimized:** Touch-first navigation with an off-canvas slide-out drawer (`☰`), sticky bottom thumb-bar (`🏠 Units 📊 MCQs 🗂️`), and iOS/Android viewport-fit support.
 - 📑 **2-Tier Interactive Dropdown Accordions:** Main heads expand to sub-topics, which expand to in-depth revision notes and diagrams.
-- 🎨 **Inline SVG Architecture Diagrams:** 10 hand-crafted vector diagrams (Hypervisors, Containers vs VMs, OpenStack Nova/Neutron/Keystone, SDN planes, AWS IAM flow, Pizza-as-a-Service, Multi-Tenant Database Isolation, 3-Tier Web Architecture).
+- 🎨 **Inline SVG Architecture Diagrams:** 12 hand-crafted vector diagrams (Hypervisors, Containers vs VMs, OpenStack Nova/Neutron/Keystone, SDN planes, AWS IAM flow, Pizza-as-a-Service, Multi-Tenant Database Isolation, 3-Tier Web Architecture, NIST Roles, Fog Computing).
 - ⚖️ **7-Mark Side-by-Side Comparison Matrices:** 8 full-credit exam comparison tables ready for long-answer questions.
 - 🎯 **52-Question Exam MCQ Simulator:** Instant grading, score tracking, unit filters, and detailed explanations for every question.
 - 🗂️ **36 Interactive 3D-Flip Flashcards:** Rapid-fire memory drills for formulas, definitions, and key exam concepts.
 - 📝 **University Question Bank:** Curated model answers categorized by marks (2M, 5M, 7M, 10M).
 - 🔍 **Live Global Search:** Instant keyword lookup with automatic accordion opening.
 - 🌓 **Dark / Light Theme Toggle:** Clean contrast tuned for long study sessions.
-- 📱 **100% Mobile & Offline Ready:** Zero external CSS/JS dependencies.
+- 📱 **Self-Contained & Offline Ready:** Zero external CSS/JS dependencies.
 
 ---
 
