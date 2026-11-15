@@ -1,6 +1,167 @@
 # -*- coding: utf-8 -*-
 
-SVG_HYPERVISOR = """
+def make_diagram_toolbar(query, official_label, official_url, sketch_tip):
+    encoded_query = query.replace(" ", "+")
+    return f"""
+<div class="diagram-ref-bar">
+  <div class="diagram-ref-top">
+    <div class="diagram-ref-info">
+      <span class="ref-tag">📸 Visual References</span>
+      <span>Real architecture diagrams & Google Image photos for exam revision:</span>
+    </div>
+    <div class="diagram-ref-actions">
+      <a href="https://www.google.com/search?tbm=isch&q={encoded_query}" target="_blank" rel="noopener" class="btn-ref btn-ref-google">
+        <span>🔍 Search Google Images</span>
+        <span class="ext-icon">↗</span>
+      </a>
+      <a href="{official_url}" target="_blank" rel="noopener" class="btn-ref btn-ref-wiki">
+        <span>🌐 {official_label}</span>
+        <span class="ext-icon">↗</span>
+      </a>
+    </div>
+  </div>
+  <div class="diagram-ref-tip">
+    <strong>✏️ 7-Mark Drawing Tip:</strong> {sketch_tip}
+  </div>
+</div>
+"""
+
+# ==================== UNIT 1: NIST REFERENCE ARCHITECTURE ====================
+_SVG_NIST_BASE = """
+<svg viewBox="0 0 740 330" xmlns="http://www.w3.org/2000/svg" style="font-family: inherit;">
+  <rect x="10" y="10" width="720" height="310" rx="14" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+  <text x="370" y="36" text-anchor="middle" fill="#38bdf8" font-size="16" font-weight="bold">NIST SP 500-292: Cloud Computing Reference Architecture</text>
+
+  <!-- Cloud Consumer (Left) -->
+  <g transform="translate(30, 60)">
+    <rect x="0" y="0" width="140" height="235" rx="10" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
+    <rect x="10" y="12" width="120" height="32" rx="6" fill="#0284c7"/>
+    <text x="70" y="32" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="bold">Cloud Consumer</text>
+    
+    <rect x="15" y="55" width="110" height="48" rx="4" fill="#1e293b"/>
+    <text x="70" y="76" text-anchor="middle" fill="#f8fafc" font-size="10" font-weight="bold">SaaS Consumer</text>
+    <text x="70" y="92" text-anchor="middle" fill="#94a3b8" font-size="9">End Users, Apps</text>
+
+    <rect x="15" y="112" width="110" height="48" rx="4" fill="#1e293b"/>
+    <text x="70" y="133" text-anchor="middle" fill="#f8fafc" font-size="10" font-weight="bold">PaaS Consumer</text>
+    <text x="70" y="149" text-anchor="middle" fill="#94a3b8" font-size="9">Developers, DBAs</text>
+
+    <rect x="15" y="169" width="110" height="48" rx="4" fill="#1e293b"/>
+    <text x="70" y="190" text-anchor="middle" fill="#f8fafc" font-size="10" font-weight="bold">IaaS Consumer</text>
+    <text x="70" y="206" text-anchor="middle" fill="#94a3b8" font-size="9">SysAdmins, DevOps</text>
+  </g>
+
+  <!-- Cloud Broker (Center Top) -->
+  <g transform="translate(200, 60)">
+    <rect x="0" y="0" width="180" height="85" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="1.5"/>
+    <rect x="10" y="8" width="160" height="26" rx="4" fill="#7c3aed"/>
+    <text x="90" y="25" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="bold">Cloud Broker</text>
+    <text x="90" y="48" text-anchor="middle" fill="#ddd6fe" font-size="9">Service Intermediation</text>
+    <text x="90" y="62" text-anchor="middle" fill="#ddd6fe" font-size="9">Aggregation & Arbitrage</text>
+    <text x="90" y="75" text-anchor="middle" fill="#a855f7" font-size="8">Manages Multiple CSPs</text>
+  </g>
+
+  <!-- Cloud Auditor (Center Bottom) -->
+  <g transform="translate(200, 160)">
+    <rect x="0" y="0" width="180" height="85" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="1.5"/>
+    <rect x="10" y="8" width="160" height="26" rx="4" fill="#059669"/>
+    <text x="90" y="25" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="bold">Cloud Auditor</text>
+    <text x="90" y="48" text-anchor="middle" fill="#a7f3d0" font-size="9">Security Audit (SOC2/ISO)</text>
+    <text x="90" y="62" text-anchor="middle" fill="#a7f3d0" font-size="9">Privacy Impact Assessment</text>
+    <text x="90" y="75" text-anchor="middle" fill="#34d399" font-size="8">Performance Evaluation</text>
+  </g>
+
+  <!-- Cloud Provider (Right) -->
+  <g transform="translate(410, 60)">
+    <rect x="0" y="0" width="300" height="185" rx="10" fill="#0f172a" stroke="#f59e0b" stroke-width="1.5"/>
+    <rect x="10" y="10" width="280" height="28" rx="4" fill="#d97706"/>
+    <text x="150" y="28" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="bold">Cloud Provider (AWS, Azure, GCP)</text>
+
+    <!-- 3 Layers of Service -->
+    <rect x="15" y="46" width="85" height="38" rx="4" fill="#1e293b" stroke="#64748b"/>
+    <text x="57" y="65" text-anchor="middle" fill="#f8fafc" font-size="10" font-weight="bold">SaaS</text>
+    <text x="57" y="77" text-anchor="middle" fill="#94a3b8" font-size="8">Software</text>
+
+    <rect x="108" y="46" width="85" height="38" rx="4" fill="#1e293b" stroke="#64748b"/>
+    <text x="150" y="65" text-anchor="middle" fill="#f8fafc" font-size="10" font-weight="bold">PaaS</text>
+    <text x="150" y="77" text-anchor="middle" fill="#94a3b8" font-size="8">Platform</text>
+
+    <rect x="200" y="46" width="85" height="38" rx="4" fill="#1e293b" stroke="#64748b"/>
+    <text x="242" y="65" text-anchor="middle" fill="#f8fafc" font-size="10" font-weight="bold">IaaS</text>
+    <text x="242" y="77" text-anchor="middle" fill="#94a3b8" font-size="8">Infra</text>
+
+    <!-- Management & Security -->
+    <rect x="15" y="92" width="270" height="38" rx="4" fill="#0369a1"/>
+    <text x="150" y="110" text-anchor="middle" fill="#ffffff" font-size="10" font-weight="bold">Service Orchestration & Provisioning</text>
+    <text x="150" y="123" text-anchor="middle" fill="#bae6fd" font-size="8">Resource Pooling · Dynamic Elasticity · Rapid Scheduling</text>
+
+    <rect x="15" y="136" width="270" height="38" rx="4" fill="#334155"/>
+    <text x="150" y="154" text-anchor="middle" fill="#f8fafc" font-size="10" font-weight="bold">Cloud Service Management & Security</text>
+    <text x="150" y="167" text-anchor="middle" fill="#cbd5e1" font-size="8">Fault Tolerance · SLA Monitoring · Billing Automation</text>
+  </g>
+
+  <!-- Cloud Carrier (Bottom Band) -->
+  <g transform="translate(200, 255)">
+    <rect x="0" y="0" width="510" height="40" rx="8" fill="#1e293b" stroke="#64748b"/>
+    <text x="255" y="24" text-anchor="middle" fill="#94a3b8" font-size="11" font-weight="bold">Cloud Carrier (Network & Telecom Transport — ISPs, Dark Fiber, SLA)</text>
+  </g>
+</svg>
+"""
+
+SVG_NIST_ROLES = _SVG_NIST_BASE + make_diagram_toolbar(
+    "NIST Cloud Computing Reference Architecture Diagram SP 500-292",
+    "NIST SP 500-292 Official Document",
+    "https://csrc.nist.gov/publications/detail/sp/500-292/final",
+    "Draw 5 boxes: Cloud Consumer (left), Cloud Provider (right), Broker (middle top), Auditor (middle bottom), and Carrier spanning the bottom."
+)
+
+# ==================== UNIT 1: FOG COMPUTING VS CLOUD ====================
+_SVG_FOG_BASE = """
+<svg viewBox="0 0 740 310" xmlns="http://www.w3.org/2000/svg" style="font-family: inherit;">
+  <rect x="10" y="10" width="720" height="290" rx="14" fill="#1e293b" stroke="#10b981" stroke-width="2"/>
+  <text x="370" y="34" text-anchor="middle" fill="#10b981" font-size="16" font-weight="bold">Hierarchical Fog Computing Architecture vs Centralized Cloud</text>
+
+  <!-- Level 3: Core Cloud (Top) -->
+  <g transform="translate(40, 50)">
+    <rect x="0" y="0" width="660" height="60" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
+    <rect x="10" y="8" width="180" height="44" rx="6" fill="#0284c7"/>
+    <text x="100" y="28" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="bold">Tier 3: Core Cloud</text>
+    <text x="100" y="44" text-anchor="middle" fill="#e0f2fe" font-size="9">AWS / Azure / GCP Datacenters</text>
+    <text x="420" y="26" text-anchor="middle" fill="#38bdf8" font-size="11" font-weight="bold">Massive Compute · Deep AI Training · Big Data Warehousing · Global Archives</text>
+    <text x="420" y="44" text-anchor="middle" fill="#94a3b8" font-size="10">High Latency: 100 – 250 ms | Unlimited Scale | Centralized Control</text>
+  </g>
+
+  <!-- Level 2: Fog Nodes (Middle) -->
+  <g transform="translate(40, 125)">
+    <rect x="0" y="0" width="660" height="70" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="1.5"/>
+    <rect x="10" y="8" width="180" height="54" rx="6" fill="#059669"/>
+    <text x="100" y="30" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="bold">Tier 2: Fog Layer</text>
+    <text x="100" y="48" text-anchor="middle" fill="#a7f3d0" font-size="9">Routers, Gateways, Micro-DCs</text>
+    <text x="420" y="30" text-anchor="middle" fill="#34d399" font-size="11" font-weight="bold">Localized Real-Time Analytics · Data Filtering & Reduction · Protocol Translation</text>
+    <text x="420" y="50" text-anchor="middle" fill="#a7f3d0" font-size="10">Ultra-Low Latency: 1 – 15 ms | High Location Awareness | Edge Mobility</text>
+  </g>
+
+  <!-- Level 1: Edge & IoT Devices (Bottom) -->
+  <g transform="translate(40, 210)">
+    <rect x="0" y="0" width="660" height="70" rx="8" fill="#0f172a" stroke="#f59e0b" stroke-width="1.5"/>
+    <rect x="10" y="8" width="180" height="54" rx="6" fill="#d97706"/>
+    <text x="100" y="30" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="bold">Tier 1: Edge / IoT</text>
+    <text x="100" y="48" text-anchor="middle" fill="#fef3c7" font-size="9">Sensors, Smart Meters, Cameras</text>
+    <text x="420" y="30" text-anchor="middle" fill="#fbbf24" font-size="11" font-weight="bold">Autonomous Vehicles · Smart Grid · Healthcare Monitors · Industrial Robotics</text>
+    <text x="420" y="50" text-anchor="middle" fill="#cbd5e1" font-size="10">Sub-millisecond Local Data Generation | Battery Powered | Millions of Nodes</text>
+  </g>
+</svg>
+"""
+
+SVG_FOG_COMPUTING = _SVG_FOG_BASE + make_diagram_toolbar(
+    "Fog Computing Architecture vs Cloud Computing IoT Edge Diagram",
+    "Fog Computing on Wikimedia Commons",
+    "https://commons.wikimedia.org/wiki/File:Fog_computing_architecture.png",
+    "Show a 3-tier pyramid: Bottom = IoT / Sensors; Middle = Fog Nodes (gateways/switches, 1-15ms); Top = Core Cloud (datacenters, 100-250ms)."
+)
+
+# ==================== UNIT 4: HYPERVISOR DIAGRAM ====================
+_SVG_HYPERVISOR_BASE = """
 <svg viewBox="0 0 740 320" xmlns="http://www.w3.org/2000/svg" style="font-family: inherit;">
   <!-- Type 1 Bare Metal -->
   <g transform="translate(10, 10)">
@@ -68,7 +229,15 @@ SVG_HYPERVISOR = """
 </svg>
 """
 
-SVG_VM_VS_CONTAINER = """
+SVG_HYPERVISOR = _SVG_HYPERVISOR_BASE + make_diagram_toolbar(
+    "Type 1 vs Type 2 Hypervisor Architecture Diagram",
+    "Wikimedia Commons Hypervisor Diagram",
+    "https://commons.wikimedia.org/wiki/File:Virtualization_-_Type_1_or_Type2_-_IT.png",
+    "Type 1 = Hardware -> Hypervisor -> VMs. Type 2 = Hardware -> Host OS -> Hypervisor -> VMs. Emphasize that Type 1 has NO Host OS!"
+)
+
+# ==================== UNIT 4: VM VS CONTAINER ====================
+_SVG_VM_VS_CONTAINER_BASE = """
 <svg viewBox="0 0 740 310" xmlns="http://www.w3.org/2000/svg" style="font-family: inherit;">
   <!-- Virtual Machine -->
   <g transform="translate(10, 10)">
@@ -140,7 +309,15 @@ SVG_VM_VS_CONTAINER = """
 </svg>
 """
 
-SVG_OPENSTACK = """
+SVG_VM_VS_CONTAINER = _SVG_VM_VS_CONTAINER_BASE + make_diagram_toolbar(
+    "Docker Containers vs Virtual Machines Architecture Diagram",
+    "Docker Architecture Whitepaper",
+    "https://docs.docker.com/get-started/overview/",
+    "Highlight that Containers DO NOT have a Guest OS; they share the Host OS Kernel via namespaces & cgroups, booting in milliseconds."
+)
+
+# ==================== UNIT 4: OPENSTACK ====================
+_SVG_OPENSTACK_BASE = """
 <svg viewBox="0 0 740 380" xmlns="http://www.w3.org/2000/svg" style="font-family: inherit;">
   <rect x="10" y="10" width="720" height="360" rx="14" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
   <text x="370" y="38" text-anchor="middle" fill="#38bdf8" font-size="17" font-weight="bold">OpenStack Architecture & Core Components</text>
@@ -205,17 +382,18 @@ SVG_OPENSTACK = """
     <text x="85" y="25" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="bold">Octavia (Load Balancer)</text>
     <text x="85" y="45" text-anchor="middle" fill="#c7d2fe" font-size="10">LBaaS Traffic Distribution</text>
   </g>
-
-  <!-- Connective Arrows -->
-  <path d="M 370 95 L 370 115" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4"/>
-  <path d="M 370 160 L 112 185" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4"/>
-  <path d="M 370 160 L 282 185" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4"/>
-  <path d="M 370 160 L 452 185" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4"/>
-  <path d="M 370 160 L 622 185" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4"/>
 </svg>
 """
 
-SVG_SDN = """
+SVG_OPENSTACK = _SVG_OPENSTACK_BASE + make_diagram_toolbar(
+    "OpenStack Architecture Nova Neutron Keystone Swift Glance Diagram",
+    "OpenStack Official Architecture Map",
+    "https://commons.wikimedia.org/wiki/File:OpenStack_Map.svg",
+    "Always draw Keystone in the center (authenticating everything) and Horizon on top as the UI. Group Nova (Compute), Neutron (Network), Glance (Image), and Cinder (Storage)."
+)
+
+# ==================== UNIT 4: SDN ====================
+_SVG_SDN_BASE = """
 <svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg" style="font-family: inherit;">
   <rect x="10" y="10" width="700" height="280" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
   <text x="360" y="32" text-anchor="middle" fill="#38bdf8" font-size="16" font-weight="bold">Software-Defined Networking (SDN) 3-Tier Architecture</text>
@@ -245,7 +423,15 @@ SVG_SDN = """
 </svg>
 """
 
-SVG_CIA_TRIAD = """
+SVG_SDN = _SVG_SDN_BASE + make_diagram_toolbar(
+    "Software Defined Networking SDN Three Layer Architecture Diagram",
+    "Open Networking Foundation SDN Standard",
+    "https://opennetworking.org/",
+    "3 distinct layers: Application Layer on top, Control Layer in the middle (Controller brain), and Infrastructure/Data Layer at bottom (Switches). Connect with Northbound and Southbound (OpenFlow) APIs."
+)
+
+# ==================== UNIT 5: CIA TRIAD ====================
+_SVG_CIA_TRIAD_BASE = """
 <svg viewBox="0 0 600 320" xmlns="http://www.w3.org/2000/svg" style="font-family: inherit;">
   <rect x="10" y="10" width="580" height="300" rx="14" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
   <text x="300" y="38" text-anchor="middle" fill="#38bdf8" font-size="17" font-weight="bold">The CIA Triad of Cloud Security</text>
@@ -275,15 +461,18 @@ SVG_CIA_TRIAD = """
     <text x="110" y="26" text-anchor="middle" fill="#fbcfe8" font-size="13" font-weight="bold">⚡ Availability</text>
     <text x="110" y="44" text-anchor="middle" fill="#f472b6" font-size="10">Redundancy · DDoS Shield · Auto-Scale</text>
   </g>
-
-  <!-- Connecting Lines -->
-  <line x1="300" y1="115" x2="300" y2="132" stroke="#38bdf8" stroke-width="2"/>
-  <line x1="225" y1="195" x2="252" y2="188" stroke="#10b981" stroke-width="2"/>
-  <line x1="375" y1="195" x2="348" y2="188" stroke="#ec4899" stroke-width="2"/>
 </svg>
 """
 
-SVG_IAM_EVAL = """
+SVG_CIA_TRIAD = _SVG_CIA_TRIAD_BASE + make_diagram_toolbar(
+    "CIA Triad Information Security Cloud Computing Diagram",
+    "Wikimedia Commons CIA Triad Diagram",
+    "https://commons.wikimedia.org/wiki/File:Confidentiality_Integrity_Availability_triangle.png",
+    "Draw an equilateral triangle with Confidentiality at top (Encryption, IAM), Integrity at bottom-left (Hashing, Checksums), and Availability at bottom-right (Redundancy, Backups)."
+)
+
+# ==================== UNIT 5: IAM EVALUATION FLOW ====================
+_SVG_IAM_EVAL_BASE = """
 <svg viewBox="0 0 720 280" xmlns="http://www.w3.org/2000/svg" style="font-family: inherit;">
   <rect x="10" y="10" width="700" height="260" rx="12" fill="#1e293b" stroke="#f59e0b" stroke-width="2"/>
   <text x="360" y="34" text-anchor="middle" fill="#f59e0b" font-size="16" font-weight="bold">AWS IAM Policy Evaluation Logic Flow</text>
@@ -330,24 +519,18 @@ SVG_IAM_EVAL = """
     <text x="55" y="25" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="bold">ACCESS</text>
     <text x="55" y="44" text-anchor="middle" fill="#fecaca" font-size="13" font-weight="bold">DENIED ❌</text>
   </g>
-
-  <!-- Connectors -->
-  <path d="M 160 95 L 200 95" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)"/>
-  <path d="M 270 150 L 270 185" stroke="#ef4444" stroke-width="2"/>
-  <text x="280" y="170" fill="#ef4444" font-size="11" font-weight="bold">YES</text>
-
-  <path d="M 340 105 L 390 105" stroke="#94a3b8" stroke-width="2"/>
-  <text x="360" y="98" fill="#94a3b8" font-size="11">NO</text>
-
-  <path d="M 530 105 L 570 105" stroke="#10b981" stroke-width="2"/>
-  <text x="545" y="98" fill="#10b981" font-size="11" font-weight="bold">YES</text>
-
-  <path d="M 460 150 L 460 185" stroke="#ef4444" stroke-width="2"/>
-  <text x="470" y="170" fill="#ef4444" font-size="11">NO</text>
 </svg>
 """
 
-SVG_PIZZA = """
+SVG_IAM_EVAL = _SVG_IAM_EVAL_BASE + make_diagram_toolbar(
+    "AWS IAM Policy Evaluation Logic Flowchart Diagram",
+    "AWS IAM Official Documentation",
+    "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html",
+    "Draw flowchart starting with 'Default: Implicit Deny'. Check 1: Explicit Deny? (YES -> Deny). Check 2: Explicit Allow? (YES -> Allow, NO -> Deny). State that Explicit Deny always trumps Allow!"
+)
+
+# ==================== UNIT 2: PIZZA AS A SERVICE ====================
+_SVG_PIZZA_BASE = """
 <svg viewBox="0 0 740 280" xmlns="http://www.w3.org/2000/svg" style="font-family: inherit;">
   <rect x="10" y="10" width="720" height="260" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
   <text x="370" y="32" text-anchor="middle" fill="#38bdf8" font-size="15" font-weight="bold">"Pizza-as-a-Service" Analogy (Cloud Service Models)</text>
@@ -423,9 +606,15 @@ SVG_PIZZA = """
 </svg>
 """
 
-# ==================== NEW UNIT 3 ARCHITECTURAL SVGS ====================
+SVG_PIZZA = _SVG_PIZZA_BASE + make_diagram_toolbar(
+    "Pizza as a Service Cloud Computing Diagram IaaS PaaS SaaS",
+    "Albert Barron's Pizza-as-a-Service Guide",
+    "https://www.linkedin.com/pulse/pizza-service-20-albert-barron/",
+    "4-column breakdown: On-Prem (You manage all 9); IaaS (Vendor handles hardware/virt); PaaS (Vendor handles runtime/OS, you bring code & data); SaaS (Vendor manages 100%)."
+)
 
-SVG_DEPLOYMENT_MODELS = """
+# ==================== UNIT 3: DEPLOYMENT MODELS ====================
+_SVG_DEPLOYMENT_MODELS_BASE = """
 <svg viewBox="0 0 740 330" xmlns="http://www.w3.org/2000/svg" style="font-family: inherit;">
   <rect x="10" y="10" width="720" height="310" rx="14" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
   <text x="370" y="34" text-anchor="middle" fill="#38bdf8" font-size="16" font-weight="bold">The 4 Cloud Deployment Models & Hybrid Cloud Bursting</text>
@@ -508,7 +697,15 @@ SVG_DEPLOYMENT_MODELS = """
 </svg>
 """
 
-SVG_MULTI_TENANT_PATTERNS = """
+SVG_DEPLOYMENT_MODELS = _SVG_DEPLOYMENT_MODELS_BASE + make_diagram_toolbar(
+    "Cloud Deployment Models Public Private Hybrid Community Cloud Bursting Diagram",
+    "Cloud Deployment Models on Wikimedia Commons",
+    "https://commons.wikimedia.org/wiki/File:Cloud_computing.svg",
+    "Draw 4 quadrants or cards: Public (multi-tenant), Private (single-tenant), Community (shared domain orgs), Hybrid (Private + Public connection with Cloud Bursting arrow)."
+)
+
+# ==================== UNIT 3: MULTI-TENANT PATTERNS ====================
+_SVG_MULTI_TENANT_BASE = """
 <svg viewBox="0 0 740 310" xmlns="http://www.w3.org/2000/svg" style="font-family: inherit;">
   <rect x="10" y="10" width="720" height="290" rx="14" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
   <text x="370" y="34" text-anchor="middle" fill="#38bdf8" font-size="16" font-weight="bold">Multi-Tenant Database Isolation Patterns (Pool vs Bridge vs Silo)</text>
@@ -570,7 +767,15 @@ SVG_MULTI_TENANT_PATTERNS = """
 </svg>
 """
 
-SVG_THREE_TIER_ARCHITECTURE = """
+SVG_MULTI_TENANT_PATTERNS = _SVG_MULTI_TENANT_BASE + make_diagram_toolbar(
+    "Multi Tenant Database Architecture Silo Bridge Pool Diagram",
+    "AWS Architecture Center: Multi-Tenant Data Isolation",
+    "https://aws.amazon.com/blogs/database/multi-tenant-data-isolation-with-postgresql-row-level-security/",
+    "Compare 3 models: Silo (separate physical DB instance per tenant), Bridge (shared DB, separate schemas), and Pool (shared DB and shared tables filtered by tenant_id column)."
+)
+
+# ==================== UNIT 3: 3-TIER ARCHITECTURE ====================
+_SVG_THREE_TIER_BASE = """
 <svg viewBox="0 0 740 320" xmlns="http://www.w3.org/2000/svg" style="font-family: inherit;">
   <rect x="10" y="10" width="720" height="300" rx="14" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
   <text x="370" y="34" text-anchor="middle" fill="#38bdf8" font-size="16" font-weight="bold">Multi-Server 3-Tier Enterprise Web Architecture</text>
@@ -646,11 +851,12 @@ SVG_THREE_TIER_ARCHITECTURE = """
     <text x="60" y="176" text-anchor="middle" fill="#e9d5ff" font-size="8">Read-Only Slave</text>
     <text x="60" y="188" text-anchor="middle" fill="#d8b4fe" font-size="8">Async Replication</text>
   </g>
-
-  <!-- Connecting Lines -->
-  <line x1="140" y1="170" x2="170" y2="170" stroke="#94a3b8" stroke-width="2"/>
-  <line x1="275" y1="170" x2="305" y2="170" stroke="#94a3b8" stroke-width="2"/>
-  <line x1="420" y1="170" x2="450" y2="170" stroke="#94a3b8" stroke-width="2"/>
-  <line x1="565" y1="170" x2="595" y2="170" stroke="#94a3b8" stroke-width="2"/>
 </svg>
 """
+
+SVG_THREE_TIER_ARCHITECTURE = _SVG_THREE_TIER_BASE + make_diagram_toolbar(
+    "Three Tier Cloud Web Architecture AWS Diagram",
+    "Google Cloud & AWS Architecture Center",
+    "https://cloud.google.com/architecture",
+    "Clearly separate 3 layers: Presentation/Web Tier (Stateless HTTP/Nginx) -> Application Tier (Business logic & worker queues) -> Database Tier (Master DB + Read Replicas)."
+)

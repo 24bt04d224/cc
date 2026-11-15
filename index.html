@@ -886,6 +886,94 @@ code {
   text-align: center;
 }
 
+/* Diagram Reference & Google Photo Links Bar */
+.diagram-ref-bar {
+  width: 100%;
+  max-width: 740px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 0.85rem 1rem;
+  margin-top: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  text-align: left;
+}
+.diagram-ref-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+.diagram-ref-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  font-weight: 500;
+  flex-wrap: wrap;
+}
+.ref-tag {
+  background-color: var(--accent-light);
+  color: var(--accent);
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+.diagram-ref-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.btn-ref {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.38rem 0.75rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.78rem;
+  font-weight: 600;
+  transition: all 0.15s ease;
+  min-height: 32px;
+}
+.btn-ref-google {
+  background: linear-gradient(135deg, #1e3a8a, #0284c7);
+  color: #ffffff !important;
+  border: 1px solid #38bdf8;
+}
+.btn-ref-google:hover {
+  background: linear-gradient(135deg, #0284c7, #38bdf8);
+  color: #0b0f19 !important;
+  transform: translateY(-1px);
+}
+.btn-ref-wiki {
+  background-color: var(--bg-secondary);
+  color: var(--text-secondary) !important;
+  border: 1px solid var(--border-color);
+}
+.btn-ref-wiki:hover {
+  border-color: var(--accent);
+  color: var(--text-primary) !important;
+  transform: translateY(-1px);
+}
+.diagram-ref-tip {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  background-color: var(--bg-secondary);
+  border-left: 3px solid var(--warning);
+  padding: 0.45rem 0.75rem;
+  border-radius: 0 6px 6px 0;
+  line-height: 1.45;
+}
+
 /* Lists */
 ul, ol {
   padding-left: 1.4rem;
@@ -1807,6 +1895,111 @@ li strong {
               <p>Cloud systems automatically control and optimize resource use by leveraging a metering capability at some level of abstraction appropriate to the type of service (e.g., storage, processing, bandwidth, active user accounts).</p>
             </div>
           </div>
+          <div class="diagram-container">
+            
+<svg viewBox="0 0 740 330" xmlns="http://www.w3.org/2000/svg" style="font-family: inherit;">
+  <rect x="10" y="10" width="720" height="310" rx="14" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+  <text x="370" y="36" text-anchor="middle" fill="#38bdf8" font-size="16" font-weight="bold">NIST SP 500-292: Cloud Computing Reference Architecture</text>
+
+  <!-- Cloud Consumer (Left) -->
+  <g transform="translate(30, 60)">
+    <rect x="0" y="0" width="140" height="235" rx="10" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
+    <rect x="10" y="12" width="120" height="32" rx="6" fill="#0284c7"/>
+    <text x="70" y="32" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="bold">Cloud Consumer</text>
+    
+    <rect x="15" y="55" width="110" height="48" rx="4" fill="#1e293b"/>
+    <text x="70" y="76" text-anchor="middle" fill="#f8fafc" font-size="10" font-weight="bold">SaaS Consumer</text>
+    <text x="70" y="92" text-anchor="middle" fill="#94a3b8" font-size="9">End Users, Apps</text>
+
+    <rect x="15" y="112" width="110" height="48" rx="4" fill="#1e293b"/>
+    <text x="70" y="133" text-anchor="middle" fill="#f8fafc" font-size="10" font-weight="bold">PaaS Consumer</text>
+    <text x="70" y="149" text-anchor="middle" fill="#94a3b8" font-size="9">Developers, DBAs</text>
+
+    <rect x="15" y="169" width="110" height="48" rx="4" fill="#1e293b"/>
+    <text x="70" y="190" text-anchor="middle" fill="#f8fafc" font-size="10" font-weight="bold">IaaS Consumer</text>
+    <text x="70" y="206" text-anchor="middle" fill="#94a3b8" font-size="9">SysAdmins, DevOps</text>
+  </g>
+
+  <!-- Cloud Broker (Center Top) -->
+  <g transform="translate(200, 60)">
+    <rect x="0" y="0" width="180" height="85" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="1.5"/>
+    <rect x="10" y="8" width="160" height="26" rx="4" fill="#7c3aed"/>
+    <text x="90" y="25" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="bold">Cloud Broker</text>
+    <text x="90" y="48" text-anchor="middle" fill="#ddd6fe" font-size="9">Service Intermediation</text>
+    <text x="90" y="62" text-anchor="middle" fill="#ddd6fe" font-size="9">Aggregation & Arbitrage</text>
+    <text x="90" y="75" text-anchor="middle" fill="#a855f7" font-size="8">Manages Multiple CSPs</text>
+  </g>
+
+  <!-- Cloud Auditor (Center Bottom) -->
+  <g transform="translate(200, 160)">
+    <rect x="0" y="0" width="180" height="85" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="1.5"/>
+    <rect x="10" y="8" width="160" height="26" rx="4" fill="#059669"/>
+    <text x="90" y="25" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="bold">Cloud Auditor</text>
+    <text x="90" y="48" text-anchor="middle" fill="#a7f3d0" font-size="9">Security Audit (SOC2/ISO)</text>
+    <text x="90" y="62" text-anchor="middle" fill="#a7f3d0" font-size="9">Privacy Impact Assessment</text>
+    <text x="90" y="75" text-anchor="middle" fill="#34d399" font-size="8">Performance Evaluation</text>
+  </g>
+
+  <!-- Cloud Provider (Right) -->
+  <g transform="translate(410, 60)">
+    <rect x="0" y="0" width="300" height="185" rx="10" fill="#0f172a" stroke="#f59e0b" stroke-width="1.5"/>
+    <rect x="10" y="10" width="280" height="28" rx="4" fill="#d97706"/>
+    <text x="150" y="28" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="bold">Cloud Provider (AWS, Azure, GCP)</text>
+
+    <!-- 3 Layers of Service -->
+    <rect x="15" y="46" width="85" height="38" rx="4" fill="#1e293b" stroke="#64748b"/>
+    <text x="57" y="65" text-anchor="middle" fill="#f8fafc" font-size="10" font-weight="bold">SaaS</text>
+    <text x="57" y="77" text-anchor="middle" fill="#94a3b8" font-size="8">Software</text>
+
+    <rect x="108" y="46" width="85" height="38" rx="4" fill="#1e293b" stroke="#64748b"/>
+    <text x="150" y="65" text-anchor="middle" fill="#f8fafc" font-size="10" font-weight="bold">PaaS</text>
+    <text x="150" y="77" text-anchor="middle" fill="#94a3b8" font-size="8">Platform</text>
+
+    <rect x="200" y="46" width="85" height="38" rx="4" fill="#1e293b" stroke="#64748b"/>
+    <text x="242" y="65" text-anchor="middle" fill="#f8fafc" font-size="10" font-weight="bold">IaaS</text>
+    <text x="242" y="77" text-anchor="middle" fill="#94a3b8" font-size="8">Infra</text>
+
+    <!-- Management & Security -->
+    <rect x="15" y="92" width="270" height="38" rx="4" fill="#0369a1"/>
+    <text x="150" y="110" text-anchor="middle" fill="#ffffff" font-size="10" font-weight="bold">Service Orchestration & Provisioning</text>
+    <text x="150" y="123" text-anchor="middle" fill="#bae6fd" font-size="8">Resource Pooling · Dynamic Elasticity · Rapid Scheduling</text>
+
+    <rect x="15" y="136" width="270" height="38" rx="4" fill="#334155"/>
+    <text x="150" y="154" text-anchor="middle" fill="#f8fafc" font-size="10" font-weight="bold">Cloud Service Management & Security</text>
+    <text x="150" y="167" text-anchor="middle" fill="#cbd5e1" font-size="8">Fault Tolerance · SLA Monitoring · Billing Automation</text>
+  </g>
+
+  <!-- Cloud Carrier (Bottom Band) -->
+  <g transform="translate(200, 255)">
+    <rect x="0" y="0" width="510" height="40" rx="8" fill="#1e293b" stroke="#64748b"/>
+    <text x="255" y="24" text-anchor="middle" fill="#94a3b8" font-size="11" font-weight="bold">Cloud Carrier (Network & Telecom Transport — ISPs, Dark Fiber, SLA)</text>
+  </g>
+</svg>
+
+<div class="diagram-ref-bar">
+  <div class="diagram-ref-top">
+    <div class="diagram-ref-info">
+      <span class="ref-tag">📸 Visual References</span>
+      <span>Real architecture diagrams & Google Image photos for exam revision:</span>
+    </div>
+    <div class="diagram-ref-actions">
+      <a href="https://www.google.com/search?tbm=isch&q=NIST+Cloud+Computing+Reference+Architecture+Diagram+SP+500-292" target="_blank" rel="noopener" class="btn-ref btn-ref-google">
+        <span>🔍 Search Google Images</span>
+        <span class="ext-icon">↗</span>
+      </a>
+      <a href="https://csrc.nist.gov/publications/detail/sp/500-292/final" target="_blank" rel="noopener" class="btn-ref btn-ref-wiki">
+        <span>🌐 NIST SP 500-292 Official Document</span>
+        <span class="ext-icon">↗</span>
+      </a>
+    </div>
+  </div>
+  <div class="diagram-ref-tip">
+    <strong>✏️ 7-Mark Drawing Tip:</strong> Draw 5 boxes: Cloud Consumer (left), Cloud Provider (right), Broker (middle top), Auditor (middle bottom), and Carrier spanning the bottom.
+  </div>
+</div>
+
+            <div class="diagram-caption">Figure 1.1: NIST SP 500-292 Cloud Computing Reference Architecture (5 Core Actors).</div>
+          </div>
         </div>
       </div>
 
@@ -2210,7 +2403,7 @@ li strong {
         <div class="sub-topic-detail">
           <div class="exam-tip">
             <strong>Formula from Lecture Slides:</strong><br>
-            $$\text{{Sustenance}} = \text{{Technology Strength}} + \text{{Business Skills}}$$
+            $$\text{Sustenance} = \text{Technology Strength} + \text{Business Skills}$$
           </div>
           <ol style="margin-left: 1.25rem; line-height: 1.6;">
             <li><strong>Certifications & Standards Compliance:</strong> Must comply with ISO 27001, Open Cloud Consortium (OCC), IEEE, and SNIA standards.</li>
@@ -2250,6 +2443,67 @@ li strong {
             <li><strong>On-Flight In-Flight Avionics:</strong> Real-time engine telemetry analysis while aircraft is in flight with limited satellite bandwidth.</li>
             <li><strong>Smart Traffic & Autonomous Vehicles:</strong> Immediate collision avoidance decisions executed at local traffic intersection fog nodes.</li>
           </ul>
+          <div class="diagram-container">
+            
+<svg viewBox="0 0 740 310" xmlns="http://www.w3.org/2000/svg" style="font-family: inherit;">
+  <rect x="10" y="10" width="720" height="290" rx="14" fill="#1e293b" stroke="#10b981" stroke-width="2"/>
+  <text x="370" y="34" text-anchor="middle" fill="#10b981" font-size="16" font-weight="bold">Hierarchical Fog Computing Architecture vs Centralized Cloud</text>
+
+  <!-- Level 3: Core Cloud (Top) -->
+  <g transform="translate(40, 50)">
+    <rect x="0" y="0" width="660" height="60" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
+    <rect x="10" y="8" width="180" height="44" rx="6" fill="#0284c7"/>
+    <text x="100" y="28" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="bold">Tier 3: Core Cloud</text>
+    <text x="100" y="44" text-anchor="middle" fill="#e0f2fe" font-size="9">AWS / Azure / GCP Datacenters</text>
+    <text x="420" y="26" text-anchor="middle" fill="#38bdf8" font-size="11" font-weight="bold">Massive Compute · Deep AI Training · Big Data Warehousing · Global Archives</text>
+    <text x="420" y="44" text-anchor="middle" fill="#94a3b8" font-size="10">High Latency: 100 – 250 ms | Unlimited Scale | Centralized Control</text>
+  </g>
+
+  <!-- Level 2: Fog Nodes (Middle) -->
+  <g transform="translate(40, 125)">
+    <rect x="0" y="0" width="660" height="70" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="1.5"/>
+    <rect x="10" y="8" width="180" height="54" rx="6" fill="#059669"/>
+    <text x="100" y="30" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="bold">Tier 2: Fog Layer</text>
+    <text x="100" y="48" text-anchor="middle" fill="#a7f3d0" font-size="9">Routers, Gateways, Micro-DCs</text>
+    <text x="420" y="30" text-anchor="middle" fill="#34d399" font-size="11" font-weight="bold">Localized Real-Time Analytics · Data Filtering & Reduction · Protocol Translation</text>
+    <text x="420" y="50" text-anchor="middle" fill="#a7f3d0" font-size="10">Ultra-Low Latency: 1 – 15 ms | High Location Awareness | Edge Mobility</text>
+  </g>
+
+  <!-- Level 1: Edge & IoT Devices (Bottom) -->
+  <g transform="translate(40, 210)">
+    <rect x="0" y="0" width="660" height="70" rx="8" fill="#0f172a" stroke="#f59e0b" stroke-width="1.5"/>
+    <rect x="10" y="8" width="180" height="54" rx="6" fill="#d97706"/>
+    <text x="100" y="30" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="bold">Tier 1: Edge / IoT</text>
+    <text x="100" y="48" text-anchor="middle" fill="#fef3c7" font-size="9">Sensors, Smart Meters, Cameras</text>
+    <text x="420" y="30" text-anchor="middle" fill="#fbbf24" font-size="11" font-weight="bold">Autonomous Vehicles · Smart Grid · Healthcare Monitors · Industrial Robotics</text>
+    <text x="420" y="50" text-anchor="middle" fill="#cbd5e1" font-size="10">Sub-millisecond Local Data Generation | Battery Powered | Millions of Nodes</text>
+  </g>
+</svg>
+
+<div class="diagram-ref-bar">
+  <div class="diagram-ref-top">
+    <div class="diagram-ref-info">
+      <span class="ref-tag">📸 Visual References</span>
+      <span>Real architecture diagrams & Google Image photos for exam revision:</span>
+    </div>
+    <div class="diagram-ref-actions">
+      <a href="https://www.google.com/search?tbm=isch&q=Fog+Computing+Architecture+vs+Cloud+Computing+IoT+Edge+Diagram" target="_blank" rel="noopener" class="btn-ref btn-ref-google">
+        <span>🔍 Search Google Images</span>
+        <span class="ext-icon">↗</span>
+      </a>
+      <a href="https://commons.wikimedia.org/wiki/File:Fog_computing_architecture.png" target="_blank" rel="noopener" class="btn-ref btn-ref-wiki">
+        <span>🌐 Fog Computing on Wikimedia Commons</span>
+        <span class="ext-icon">↗</span>
+      </a>
+    </div>
+  </div>
+  <div class="diagram-ref-tip">
+    <strong>✏️ 7-Mark Drawing Tip:</strong> Show a 3-tier pyramid: Bottom = IoT / Sensors; Middle = Fog Nodes (gateways/switches, 1-15ms); Top = Core Cloud (datacenters, 100-250ms).
+  </div>
+</div>
+
+            <div class="diagram-caption">Figure 1.2: Hierarchical Fog Computing Architecture (Edge Devices &rarr; Fog Nodes &rarr; Core Cloud).</div>
+          </div>
         </div>
       </div>
 
@@ -2591,6 +2845,28 @@ li strong {
     <text x="75" y="185" text-anchor="middle" fill="#f5f3ff" font-size="9" font-weight="bold">VENDOR MANAGES ALL 100%</text>
   </g>
 </svg>
+
+<div class="diagram-ref-bar">
+  <div class="diagram-ref-top">
+    <div class="diagram-ref-info">
+      <span class="ref-tag">📸 Visual References</span>
+      <span>Real architecture diagrams & Google Image photos for exam revision:</span>
+    </div>
+    <div class="diagram-ref-actions">
+      <a href="https://www.google.com/search?tbm=isch&q=Pizza+as+a+Service+Cloud+Computing+Diagram+IaaS+PaaS+SaaS" target="_blank" rel="noopener" class="btn-ref btn-ref-google">
+        <span>🔍 Search Google Images</span>
+        <span class="ext-icon">↗</span>
+      </a>
+      <a href="https://www.linkedin.com/pulse/pizza-service-20-albert-barron/" target="_blank" rel="noopener" class="btn-ref btn-ref-wiki">
+        <span>🌐 Albert Barron's Pizza-as-a-Service Guide</span>
+        <span class="ext-icon">↗</span>
+      </a>
+    </div>
+  </div>
+  <div class="diagram-ref-tip">
+    <strong>✏️ 7-Mark Drawing Tip:</strong> 4-column breakdown: On-Prem (You manage all 9); IaaS (Vendor handles hardware/virt); PaaS (Vendor handles runtime/OS, you bring code & data); SaaS (Vendor manages 100%).
+  </div>
+</div>
 
             <div class="diagram-caption">Figure 2.1: Pizza-as-a-Service Analogy mapping Traditional On-Premises, IaaS, PaaS, and SaaS.</div>
           </div>
@@ -3304,6 +3580,28 @@ li strong {
     <text x="77" y="213" text-anchor="middle" fill="#fde68a" font-size="8">University Research Labs</text>
   </g>
 </svg>
+
+<div class="diagram-ref-bar">
+  <div class="diagram-ref-top">
+    <div class="diagram-ref-info">
+      <span class="ref-tag">📸 Visual References</span>
+      <span>Real architecture diagrams & Google Image photos for exam revision:</span>
+    </div>
+    <div class="diagram-ref-actions">
+      <a href="https://www.google.com/search?tbm=isch&q=Cloud+Deployment+Models+Public+Private+Hybrid+Community+Cloud+Bursting+Diagram" target="_blank" rel="noopener" class="btn-ref btn-ref-google">
+        <span>🔍 Search Google Images</span>
+        <span class="ext-icon">↗</span>
+      </a>
+      <a href="https://commons.wikimedia.org/wiki/File:Cloud_computing.svg" target="_blank" rel="noopener" class="btn-ref btn-ref-wiki">
+        <span>🌐 Cloud Deployment Models on Wikimedia Commons</span>
+        <span class="ext-icon">↗</span>
+      </a>
+    </div>
+  </div>
+  <div class="diagram-ref-tip">
+    <strong>✏️ 7-Mark Drawing Tip:</strong> Draw 4 quadrants or cards: Public (multi-tenant), Private (single-tenant), Community (shared domain orgs), Hybrid (Private + Public connection with Cloud Bursting arrow).
+  </div>
+</div>
 
         <div class="diagram-caption">Figure 3.1: Cloud Deployment Models & Hybrid Cloud Bursting Architecture</div>
       </div>
@@ -4352,6 +4650,28 @@ li strong {
   </g>
 </svg>
 
+<div class="diagram-ref-bar">
+  <div class="diagram-ref-top">
+    <div class="diagram-ref-info">
+      <span class="ref-tag">📸 Visual References</span>
+      <span>Real architecture diagrams & Google Image photos for exam revision:</span>
+    </div>
+    <div class="diagram-ref-actions">
+      <a href="https://www.google.com/search?tbm=isch&q=Multi+Tenant+Database+Architecture+Silo+Bridge+Pool+Diagram" target="_blank" rel="noopener" class="btn-ref btn-ref-google">
+        <span>🔍 Search Google Images</span>
+        <span class="ext-icon">↗</span>
+      </a>
+      <a href="https://aws.amazon.com/blogs/database/multi-tenant-data-isolation-with-postgresql-row-level-security/" target="_blank" rel="noopener" class="btn-ref btn-ref-wiki">
+        <span>🌐 AWS Architecture Center: Multi-Tenant Data Isolation</span>
+        <span class="ext-icon">↗</span>
+      </a>
+    </div>
+  </div>
+  <div class="diagram-ref-tip">
+    <strong>✏️ 7-Mark Drawing Tip:</strong> Compare 3 models: Silo (separate physical DB instance per tenant), Bridge (shared DB, separate schemas), and Pool (shared DB and shared tables filtered by tenant_id column).
+  </div>
+</div>
+
         <div class="diagram-caption">Figure 3.2: Multi-Tenant Database Isolation Patterns (Pool vs Bridge vs Silo)</div>
       </div>
       
@@ -4654,13 +4974,29 @@ li strong {
     <text x="60" y="176" text-anchor="middle" fill="#e9d5ff" font-size="8">Read-Only Slave</text>
     <text x="60" y="188" text-anchor="middle" fill="#d8b4fe" font-size="8">Async Replication</text>
   </g>
-
-  <!-- Connecting Lines -->
-  <line x1="140" y1="170" x2="170" y2="170" stroke="#94a3b8" stroke-width="2"/>
-  <line x1="275" y1="170" x2="305" y2="170" stroke="#94a3b8" stroke-width="2"/>
-  <line x1="420" y1="170" x2="450" y2="170" stroke="#94a3b8" stroke-width="2"/>
-  <line x1="565" y1="170" x2="595" y2="170" stroke="#94a3b8" stroke-width="2"/>
 </svg>
+
+<div class="diagram-ref-bar">
+  <div class="diagram-ref-top">
+    <div class="diagram-ref-info">
+      <span class="ref-tag">📸 Visual References</span>
+      <span>Real architecture diagrams & Google Image photos for exam revision:</span>
+    </div>
+    <div class="diagram-ref-actions">
+      <a href="https://www.google.com/search?tbm=isch&q=Three+Tier+Cloud+Web+Architecture+AWS+Diagram" target="_blank" rel="noopener" class="btn-ref btn-ref-google">
+        <span>🔍 Search Google Images</span>
+        <span class="ext-icon">↗</span>
+      </a>
+      <a href="https://cloud.google.com/architecture" target="_blank" rel="noopener" class="btn-ref btn-ref-wiki">
+        <span>🌐 Google Cloud & AWS Architecture Center</span>
+        <span class="ext-icon">↗</span>
+      </a>
+    </div>
+  </div>
+  <div class="diagram-ref-tip">
+    <strong>✏️ 7-Mark Drawing Tip:</strong> Clearly separate 3 layers: Presentation/Web Tier (Stateless HTTP/Nginx) -> Application Tier (Business logic & worker queues) -> Database Tier (Master DB + Read Replicas).
+  </div>
+</div>
 
         <div class="diagram-caption">Figure 3.3: Multi-Server 3-Tier Enterprise Web Architecture</div>
       </div>
@@ -5435,6 +5771,28 @@ li strong {
   </g>
 </svg>
 
+<div class="diagram-ref-bar">
+  <div class="diagram-ref-top">
+    <div class="diagram-ref-info">
+      <span class="ref-tag">📸 Visual References</span>
+      <span>Real architecture diagrams & Google Image photos for exam revision:</span>
+    </div>
+    <div class="diagram-ref-actions">
+      <a href="https://www.google.com/search?tbm=isch&q=Type+1+vs+Type+2+Hypervisor+Architecture+Diagram" target="_blank" rel="noopener" class="btn-ref btn-ref-google">
+        <span>🔍 Search Google Images</span>
+        <span class="ext-icon">↗</span>
+      </a>
+      <a href="https://commons.wikimedia.org/wiki/File:Virtualization_-_Type_1_or_Type2_-_IT.png" target="_blank" rel="noopener" class="btn-ref btn-ref-wiki">
+        <span>🌐 Wikimedia Commons Hypervisor Diagram</span>
+        <span class="ext-icon">↗</span>
+      </a>
+    </div>
+  </div>
+  <div class="diagram-ref-tip">
+    <strong>✏️ 7-Mark Drawing Tip:</strong> Type 1 = Hardware -> Hypervisor -> VMs. Type 2 = Hardware -> Host OS -> Hypervisor -> VMs. Emphasize that Type 1 has NO Host OS!
+  </div>
+</div>
+
             <div class="diagram-caption">Figure 4.1: Type 1 (Bare-Metal) vs Type 2 (Hosted) Hypervisor Architecture.</div>
           </div>
           <div class="grid-2">
@@ -5768,6 +6126,28 @@ li strong {
     <text x="170" y="268" text-anchor="middle" fill="#94a3b8" font-size="11">Server Hardware (Shared CPU, RAM, Network)</text>
   </g>
 </svg>
+
+<div class="diagram-ref-bar">
+  <div class="diagram-ref-top">
+    <div class="diagram-ref-info">
+      <span class="ref-tag">📸 Visual References</span>
+      <span>Real architecture diagrams & Google Image photos for exam revision:</span>
+    </div>
+    <div class="diagram-ref-actions">
+      <a href="https://www.google.com/search?tbm=isch&q=Docker+Containers+vs+Virtual+Machines+Architecture+Diagram" target="_blank" rel="noopener" class="btn-ref btn-ref-google">
+        <span>🔍 Search Google Images</span>
+        <span class="ext-icon">↗</span>
+      </a>
+      <a href="https://docs.docker.com/get-started/overview/" target="_blank" rel="noopener" class="btn-ref btn-ref-wiki">
+        <span>🌐 Docker Architecture Whitepaper</span>
+        <span class="ext-icon">↗</span>
+      </a>
+    </div>
+  </div>
+  <div class="diagram-ref-tip">
+    <strong>✏️ 7-Mark Drawing Tip:</strong> Highlight that Containers DO NOT have a Guest OS; they share the Host OS Kernel via namespaces & cgroups, booting in milliseconds.
+  </div>
+</div>
 
             <div class="diagram-caption">Figure 4.2: Architectural difference between Virtual Machines (Guest OS) and Containers (Shared Kernel).</div>
           </div>
@@ -6107,14 +6487,29 @@ CMD ["python", "app.py"]</code></pre>
     <text x="85" y="25" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="bold">Octavia (Load Balancer)</text>
     <text x="85" y="45" text-anchor="middle" fill="#c7d2fe" font-size="10">LBaaS Traffic Distribution</text>
   </g>
-
-  <!-- Connective Arrows -->
-  <path d="M 370 95 L 370 115" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4"/>
-  <path d="M 370 160 L 112 185" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4"/>
-  <path d="M 370 160 L 282 185" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4"/>
-  <path d="M 370 160 L 452 185" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4"/>
-  <path d="M 370 160 L 622 185" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4"/>
 </svg>
+
+<div class="diagram-ref-bar">
+  <div class="diagram-ref-top">
+    <div class="diagram-ref-info">
+      <span class="ref-tag">📸 Visual References</span>
+      <span>Real architecture diagrams & Google Image photos for exam revision:</span>
+    </div>
+    <div class="diagram-ref-actions">
+      <a href="https://www.google.com/search?tbm=isch&q=OpenStack+Architecture+Nova+Neutron+Keystone+Swift+Glance+Diagram" target="_blank" rel="noopener" class="btn-ref btn-ref-google">
+        <span>🔍 Search Google Images</span>
+        <span class="ext-icon">↗</span>
+      </a>
+      <a href="https://commons.wikimedia.org/wiki/File:OpenStack_Map.svg" target="_blank" rel="noopener" class="btn-ref btn-ref-wiki">
+        <span>🌐 OpenStack Official Architecture Map</span>
+        <span class="ext-icon">↗</span>
+      </a>
+    </div>
+  </div>
+  <div class="diagram-ref-tip">
+    <strong>✏️ 7-Mark Drawing Tip:</strong> Always draw Keystone in the center (authenticating everything) and Horizon on top as the UI. Group Nova (Compute), Neutron (Network), Glance (Image), and Cinder (Storage).
+  </div>
+</div>
 
             <div class="diagram-caption">Figure 4.3: OpenStack Service Architecture and Inter-Service Relationships.</div>
           </div>
@@ -6491,6 +6886,28 @@ CMD ["python", "app.py"]</code></pre>
   <text x="360" y="268" text-anchor="middle" fill="#ccfbf1" font-size="11">Physical & Virtual Switches, Routers, Hardware forwarding tables (no independent routing decisions)</text>
 </svg>
 
+<div class="diagram-ref-bar">
+  <div class="diagram-ref-top">
+    <div class="diagram-ref-info">
+      <span class="ref-tag">📸 Visual References</span>
+      <span>Real architecture diagrams & Google Image photos for exam revision:</span>
+    </div>
+    <div class="diagram-ref-actions">
+      <a href="https://www.google.com/search?tbm=isch&q=Software+Defined+Networking+SDN+Three+Layer+Architecture+Diagram" target="_blank" rel="noopener" class="btn-ref btn-ref-google">
+        <span>🔍 Search Google Images</span>
+        <span class="ext-icon">↗</span>
+      </a>
+      <a href="https://opennetworking.org/" target="_blank" rel="noopener" class="btn-ref btn-ref-wiki">
+        <span>🌐 Open Networking Foundation SDN Standard</span>
+        <span class="ext-icon">↗</span>
+      </a>
+    </div>
+  </div>
+  <div class="diagram-ref-tip">
+    <strong>✏️ 7-Mark Drawing Tip:</strong> 3 distinct layers: Application Layer on top, Control Layer in the middle (Controller brain), and Infrastructure/Data Layer at bottom (Switches). Connect with Northbound and Southbound (OpenFlow) APIs.
+  </div>
+</div>
+
             <div class="diagram-caption">Figure 4.4: Software-Defined Networking (SDN) 3-Layer Architecture.</div>
           </div>
           <div class="grid-3" style="margin-top: 1rem;">
@@ -6825,12 +7242,29 @@ CMD ["python", "app.py"]</code></pre>
     <text x="110" y="26" text-anchor="middle" fill="#fbcfe8" font-size="13" font-weight="bold">⚡ Availability</text>
     <text x="110" y="44" text-anchor="middle" fill="#f472b6" font-size="10">Redundancy · DDoS Shield · Auto-Scale</text>
   </g>
-
-  <!-- Connecting Lines -->
-  <line x1="300" y1="115" x2="300" y2="132" stroke="#38bdf8" stroke-width="2"/>
-  <line x1="225" y1="195" x2="252" y2="188" stroke="#10b981" stroke-width="2"/>
-  <line x1="375" y1="195" x2="348" y2="188" stroke="#ec4899" stroke-width="2"/>
 </svg>
+
+<div class="diagram-ref-bar">
+  <div class="diagram-ref-top">
+    <div class="diagram-ref-info">
+      <span class="ref-tag">📸 Visual References</span>
+      <span>Real architecture diagrams & Google Image photos for exam revision:</span>
+    </div>
+    <div class="diagram-ref-actions">
+      <a href="https://www.google.com/search?tbm=isch&q=CIA+Triad+Information+Security+Cloud+Computing+Diagram" target="_blank" rel="noopener" class="btn-ref btn-ref-google">
+        <span>🔍 Search Google Images</span>
+        <span class="ext-icon">↗</span>
+      </a>
+      <a href="https://commons.wikimedia.org/wiki/File:Confidentiality_Integrity_Availability_triangle.png" target="_blank" rel="noopener" class="btn-ref btn-ref-wiki">
+        <span>🌐 Wikimedia Commons CIA Triad Diagram</span>
+        <span class="ext-icon">↗</span>
+      </a>
+    </div>
+  </div>
+  <div class="diagram-ref-tip">
+    <strong>✏️ 7-Mark Drawing Tip:</strong> Draw an equilateral triangle with Confidentiality at top (Encryption, IAM), Integrity at bottom-left (Hashing, Checksums), and Availability at bottom-right (Redundancy, Backups).
+  </div>
+</div>
 
             <div class="diagram-caption">Figure 5.1: The CIA Triad (Confidentiality, Integrity, Availability) in Cloud Security.</div>
           </div>
@@ -7243,21 +7677,29 @@ CMD ["python", "app.py"]</code></pre>
     <text x="55" y="25" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="bold">ACCESS</text>
     <text x="55" y="44" text-anchor="middle" fill="#fecaca" font-size="13" font-weight="bold">DENIED ❌</text>
   </g>
-
-  <!-- Connectors -->
-  <path d="M 160 95 L 200 95" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)"/>
-  <path d="M 270 150 L 270 185" stroke="#ef4444" stroke-width="2"/>
-  <text x="280" y="170" fill="#ef4444" font-size="11" font-weight="bold">YES</text>
-
-  <path d="M 340 105 L 390 105" stroke="#94a3b8" stroke-width="2"/>
-  <text x="360" y="98" fill="#94a3b8" font-size="11">NO</text>
-
-  <path d="M 530 105 L 570 105" stroke="#10b981" stroke-width="2"/>
-  <text x="545" y="98" fill="#10b981" font-size="11" font-weight="bold">YES</text>
-
-  <path d="M 460 150 L 460 185" stroke="#ef4444" stroke-width="2"/>
-  <text x="470" y="170" fill="#ef4444" font-size="11">NO</text>
 </svg>
+
+<div class="diagram-ref-bar">
+  <div class="diagram-ref-top">
+    <div class="diagram-ref-info">
+      <span class="ref-tag">📸 Visual References</span>
+      <span>Real architecture diagrams & Google Image photos for exam revision:</span>
+    </div>
+    <div class="diagram-ref-actions">
+      <a href="https://www.google.com/search?tbm=isch&q=AWS+IAM+Policy+Evaluation+Logic+Flowchart+Diagram" target="_blank" rel="noopener" class="btn-ref btn-ref-google">
+        <span>🔍 Search Google Images</span>
+        <span class="ext-icon">↗</span>
+      </a>
+      <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html" target="_blank" rel="noopener" class="btn-ref btn-ref-wiki">
+        <span>🌐 AWS IAM Official Documentation</span>
+        <span class="ext-icon">↗</span>
+      </a>
+    </div>
+  </div>
+  <div class="diagram-ref-tip">
+    <strong>✏️ 7-Mark Drawing Tip:</strong> Draw flowchart starting with 'Default: Implicit Deny'. Check 1: Explicit Deny? (YES -> Deny). Check 2: Explicit Allow? (YES -> Allow, NO -> Deny). State that Explicit Deny always trumps Allow!
+  </div>
+</div>
 
             <div class="diagram-caption">Figure 5.2: AWS IAM Policy Evaluation Logic Flow.</div>
           </div>

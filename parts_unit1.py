@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
+from parts_svg import SVG_NIST_ROLES, SVG_FOG_COMPUTING
 
-TAB_UNIT1_HTML = """
+TAB_UNIT1_HTML = f"""
 <div id="unit1" class="tab-pane">
   <div class="hero-banner">
     <div class="hero-header">
@@ -108,6 +109,10 @@ TAB_UNIT1_HTML = """
               <h4>5. Measured Service (Pay-as-You-Go)</h4>
               <p>Cloud systems automatically control and optimize resource use by leveraging a metering capability at some level of abstraction appropriate to the type of service (e.g., storage, processing, bandwidth, active user accounts).</p>
             </div>
+          </div>
+          <div class="diagram-container">
+            {SVG_NIST_ROLES}
+            <div class="diagram-caption">Figure 1.1: NIST SP 500-292 Cloud Computing Reference Architecture (5 Core Actors).</div>
           </div>
         </div>
       </div>
@@ -552,6 +557,10 @@ TAB_UNIT1_HTML = """
             <li><strong>On-Flight In-Flight Avionics:</strong> Real-time engine telemetry analysis while aircraft is in flight with limited satellite bandwidth.</li>
             <li><strong>Smart Traffic & Autonomous Vehicles:</strong> Immediate collision avoidance decisions executed at local traffic intersection fog nodes.</li>
           </ul>
+          <div class="diagram-container">
+            {SVG_FOG_COMPUTING}
+            <div class="diagram-caption">Figure 1.2: Hierarchical Fog Computing Architecture (Edge Devices &rarr; Fog Nodes &rarr; Core Cloud).</div>
+          </div>
         </div>
       </div>
 

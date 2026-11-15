@@ -881,6 +881,94 @@ code {
   text-align: center;
 }
 
+/* Diagram Reference & Google Photo Links Bar */
+.diagram-ref-bar {
+  width: 100%;
+  max-width: 740px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 0.85rem 1rem;
+  margin-top: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  text-align: left;
+}
+.diagram-ref-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+.diagram-ref-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  font-weight: 500;
+  flex-wrap: wrap;
+}
+.ref-tag {
+  background-color: var(--accent-light);
+  color: var(--accent);
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+.diagram-ref-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.btn-ref {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.38rem 0.75rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.78rem;
+  font-weight: 600;
+  transition: all 0.15s ease;
+  min-height: 32px;
+}
+.btn-ref-google {
+  background: linear-gradient(135deg, #1e3a8a, #0284c7);
+  color: #ffffff !important;
+  border: 1px solid #38bdf8;
+}
+.btn-ref-google:hover {
+  background: linear-gradient(135deg, #0284c7, #38bdf8);
+  color: #0b0f19 !important;
+  transform: translateY(-1px);
+}
+.btn-ref-wiki {
+  background-color: var(--bg-secondary);
+  color: var(--text-secondary) !important;
+  border: 1px solid var(--border-color);
+}
+.btn-ref-wiki:hover {
+  border-color: var(--accent);
+  color: var(--text-primary) !important;
+  transform: translateY(-1px);
+}
+.diagram-ref-tip {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  background-color: var(--bg-secondary);
+  border-left: 3px solid var(--warning);
+  padding: 0.45rem 0.75rem;
+  border-radius: 0 6px 6px 0;
+  line-height: 1.45;
+}
+
 /* Lists */
 ul, ol {
   padding-left: 1.4rem;
