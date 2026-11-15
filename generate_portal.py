@@ -1,0 +1,314 @@
+# -*- coding: utf-8 -*-
+import os
+
+from parts_css import CSS_CODE
+from parts_unit1 import TAB_UNIT1_HTML
+from parts_unit2 import TAB_UNIT2_HTML
+from parts_unit3 import TAB_UNIT3_HTML
+from parts_unit4 import TAB_UNIT4_HTML
+from parts_unit5 import TAB_UNIT5_HTML
+from parts_comparisons import TAB_COMPARISONS_HTML
+from parts_quiz_flashcards import TAB_FLASHCARDS_HTML, TAB_QUIZ_HTML
+from parts_qbank import TAB_QBANK_HTML
+from parts_js import JS_CODE
+
+OVERVIEW_HTML = """
+<div id="overview" class="tab-pane active">
+  <div class="hero-banner">
+    <div class="hero-header">
+      <div class="hero-title">BTCS701F: Cloud Computing — Master Exam Portal</div>
+      <div class="hero-badge-group">
+        <span class="badge badge-accent">B.Tech CSE · Sem VII</span>
+        <span class="badge badge-priority">GSFC University</span>
+        <span class="badge">Academic Year 2025–26</span>
+      </div>
+    </div>
+    <p class="hero-desc">
+      Welcome to your comprehensive, all-in-one Cloud Computing examination preparation portal.
+      This platform consolidates 100% of your university syllabus (BTCS701F), complete lecture slide decks (Units 1–5),
+      and dedicated AWS IAM slide notes by Prof. Amin Shaikh. All Mobile Application Development (MAD) material has been completely removed.
+    </p>
+  </div>
+
+  <!-- Quick Stats Grid -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-icon">📚</div>
+      <div class="stat-info">
+        <h3>5 Units</h3>
+        <p>100% Syllabus Coverage</p>
+      </div>
+    </div>
+    <div class="stat-card" style="border-color: rgba(239, 68, 68, 0.4);">
+      <div class="stat-icon" style="color: var(--danger); background-color: var(--danger-bg);">⚡</div>
+      <div class="stat-info">
+        <h3 style="color: var(--danger);">50% Marks</h3>
+        <p>Units 4 & 5 (Half the Exam!)</p>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">🎯</div>
+      <div class="stat-info">
+        <h3>52 MCQs</h3>
+        <p>Interactive Exam Simulator</p>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">🗂️</div>
+      <div class="stat-info">
+        <h3>36 Cards</h3>
+        <p>3D Flip Revision Cards</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Exam Blueprint Card -->
+  <div class="topic-card">
+    <div class="topic-header">
+      <div class="topic-title">Official Syllabus Blueprint & Marks Distribution</div>
+      <span class="topic-tag">Strategic Roadmap</span>
+    </div>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Unit</th>
+            <th>Unit Title</th>
+            <th>Weightage</th>
+            <th>Contact Hours</th>
+            <th>Study Priority</th>
+            <th>Key High-Yield Focus Topics</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background-color: rgba(239, 68, 68, 0.08);">
+            <td><strong>Unit 4</strong></td>
+            <td><strong>Virtualization Technologies & Cloud Tools</strong></td>
+            <td><strong style="color: var(--danger);">25%</strong></td>
+            <td>10 Hours</td>
+            <td><span class="badge badge-priority">FIRST PRIORITY</span></td>
+            <td>Type 1 vs 2 Hypervisors, Dispatcher/Allocator/Interpreter, Docker vs VMs, OpenStack 9 components, CloudStack hierarchy, Block/Object/File storage, SDN, CDN.</td>
+          </tr>
+          <tr style="background-color: rgba(239, 68, 68, 0.08);">
+            <td><strong>Unit 5</strong></td>
+            <td><strong>Security, Privacy & Cloud Management</strong></td>
+            <td><strong style="color: var(--danger);">25%</strong></td>
+            <td>10 Hours</td>
+            <td><span class="badge badge-priority">SECOND PRIORITY</span></td>
+            <td>CIA Triad, AWS IAM (Users, Groups, Roles, Policies, Explicit Deny Rule), VM Security, Scalability vs Elasticity, 7 Real-World Security Incidents.</td>
+          </tr>
+          <tr>
+            <td><strong>Unit 3</strong></td>
+            <td><strong>Cloud Deployment Models & Architecture</strong></td>
+            <td><strong>20%</strong></td>
+            <td>9 Hours</td>
+            <td><span class="badge badge-accent">HIGH PRIORITY</span></td>
+            <td>Public/Private/Hybrid/Community, Multi-Tenant, Multi-Server, Distributed Architectures, AWS vs Azure vs GCP.</td>
+          </tr>
+          <tr>
+            <td><strong>Unit 1</strong></td>
+            <td><strong>Introduction to Cloud Computing</strong></td>
+            <td><strong>15%</strong></td>
+            <td>9 Hours</td>
+            <td><span class="badge">FOUNDATIONAL</span></td>
+            <td>5 NIST Characteristics, Benefits vs Challenges, Pizza-as-a-Service, Infrastructure Management, Criteria for Provider.</td>
+          </tr>
+          <tr>
+            <td><strong>Unit 2</strong></td>
+            <td><strong>Cloud Service Models (SPI)</strong></td>
+            <td><strong>15%</strong></td>
+            <td>7 Hours</td>
+            <td><span class="badge">FOUNDATIONAL</span></td>
+            <td>IaaS (EC2, GCE, Azure VMs), PaaS (App Engine, Beanstalk), SaaS (Google Docs, M365), Shared Responsibility Matrix.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-title">Top Scoring Strategy for University Exam</div>
+      <p>
+        Notice that <strong>Unit 4 + Unit 5 alone account for 50% of your total examination marks</strong>!
+        Always prepare Units 4 & 5 first, master the side-by-side comparison tables (for 7-mark questions), and practice the 52 interactive MCQs.
+      </p>
+    </div>
+  </div>
+
+  <!-- Course Learning Outcomes (Blooms Taxonomy) -->
+  <div class="topic-card">
+    <div class="topic-header">
+      <div class="topic-title">Course Learning Outcomes (Blooms Taxonomy)</div>
+      <span class="topic-tag">University Curriculum</span>
+    </div>
+    <div class="grid-2">
+      <div class="subcard">
+        <h4>CO1 & CO2 (Remember & Understand)</h4>
+        <p>Understand cloud computing models, multi-tier architectures, and the principles/practices of different service models (IaaS, PaaS, SaaS).</p>
+      </div>
+      <div class="subcard">
+        <h4>CO3 & CO4 (Apply & Analyze)</h4>
+        <p>Gain practical knowledge of cloud deployment models, master virtualization concepts, hypervisors, containers, and cloud management platforms (OpenStack, CloudStack).</p>
+      </div>
+      <div class="subcard" style="grid-column: 1 / -1;">
+        <h4>CO5 (Evaluate & Secure)</h4>
+        <p>Master cloud security mechanisms, privacy governance, IAM evaluation, and dynamic cloud resource management (scalability and elasticity) in multi-tenant environments.</p>
+      </div>
+    </div>
+  </div>
+</div>
+"""
+
+FULL_HTML = f"""<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BTCS701F: Cloud Computing — Master Exam Portal (GSFC University)</title>
+  <style>
+{CSS_CODE}
+  </style>
+</head>
+<body>
+
+  <!-- Top Header Navigation -->
+  <header>
+    <a href="#" class="brand" onclick="switchTab('overview'); return false;">
+      <div class="brand-logo">CC</div>
+      <div class="brand-text">
+        <h1>Cloud Computing (BTCS701F)</h1>
+        <p>GSFC University · Master Exam Portal · 100% CC Aligned</p>
+      </div>
+    </a>
+
+    <div class="header-controls">
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="globalSearchInput" placeholder="Search topics, IAM, Docker, SDN..." oninput="handleLiveSearch(this.value)">
+      </div>
+
+      <button class="btn btn-icon" id="themeToggleBtn" onclick="toggleTheme()" title="Toggle Dark/Light Mode">🌙</button>
+      <button class="btn btn-primary" onclick="window.print()" title="Print / Save Notes as PDF">🖨️ Print Notes</button>
+    </div>
+  </header>
+
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside>
+      <div class="sidebar-title">Core Navigation</div>
+      
+      <div class="nav-item active" id="nav-overview" onclick="switchTab('overview')">
+        <div class="nav-item-left">
+          <span>🏠</span>
+          <span>Roadmap & Syllabus</span>
+        </div>
+        <span class="badge">Blueprint</span>
+      </div>
+
+      <div class="sidebar-title">High-Weightage Units (50%)</div>
+      
+      <div class="nav-item" id="nav-unit4" onclick="switchTab('unit4')">
+        <div class="nav-item-left">
+          <span>📕</span>
+          <span>Unit 4: Virtualization</span>
+        </div>
+        <span class="badge badge-priority">25%</span>
+      </div>
+
+      <div class="nav-item" id="nav-unit5" onclick="switchTab('unit5')">
+        <div class="nav-item-left">
+          <span>🔒</span>
+          <span>Unit 5: Security & IAM</span>
+        </div>
+        <span class="badge badge-priority">25%</span>
+      </div>
+
+      <div class="sidebar-title">Foundational Units (50%)</div>
+
+      <div class="nav-item" id="nav-unit3" onclick="switchTab('unit3')">
+        <div class="nav-item-left">
+          <span>📙</span>
+          <span>Unit 3: Architecture</span>
+        </div>
+        <span class="badge">20%</span>
+      </div>
+
+      <div class="nav-item" id="nav-unit1" onclick="switchTab('unit1')">
+        <div class="nav-item-left">
+          <span>📘</span>
+          <span>Unit 1: Intro to Cloud</span>
+        </div>
+        <span class="badge">15%</span>
+      </div>
+
+      <div class="nav-item" id="nav-unit2" onclick="switchTab('unit2')">
+        <div class="nav-item-left">
+          <span>📗</span>
+          <span>Unit 2: Service Models</span>
+        </div>
+        <span class="badge">15%</span>
+      </div>
+
+      <div class="sidebar-title">Exam Master Tools</div>
+
+      <div class="nav-item" id="nav-comparisons" onclick="switchTab('comparisons')">
+        <div class="nav-item-left">
+          <span>📊</span>
+          <span>Comparison Matrices</span>
+        </div>
+        <span class="badge badge-accent">7 Marks</span>
+      </div>
+
+      <div class="nav-item" id="nav-quiz" onclick="switchTab('quiz')">
+        <div class="nav-item-left">
+          <span>🎯</span>
+          <span>Exam MCQ Simulator</span>
+        </div>
+        <span class="badge badge-priority">52 MCQs</span>
+      </div>
+
+      <div class="nav-item" id="nav-flashcards" onclick="switchTab('flashcards')">
+        <div class="nav-item-left">
+          <span>🗂️</span>
+          <span>Interactive Flashcards</span>
+        </div>
+        <span class="badge">36 Cards</span>
+      </div>
+
+      <div class="nav-item" id="nav-qbank" onclick="switchTab('qbank')">
+        <div class="nav-item-left">
+          <span>📝</span>
+          <span>University Question Bank</span>
+        </div>
+        <span class="badge">2/5/7/10M</span>
+      </div>
+    </aside>
+
+    <!-- Main Content Panes -->
+    <main>
+      {OVERVIEW_HTML}
+      {TAB_UNIT1_HTML}
+      {TAB_UNIT2_HTML}
+      {TAB_UNIT3_HTML}
+      {TAB_UNIT4_HTML}
+      {TAB_UNIT5_HTML}
+      {TAB_COMPARISONS_HTML}
+      {TAB_QUIZ_HTML}
+      {TAB_FLASHCARDS_HTML}
+      {TAB_QBANK_HTML}
+    </main>
+  </div>
+
+  <script>
+{JS_CODE}
+  </script>
+</body>
+</html>
+"""
+
+output_path = os.path.join(os.path.dirname(__file__), "index.html")
+with open(output_path, "w", encoding="utf-8") as f:
+    f.write(FULL_HTML)
+
+print(f"Portal successfully built! File created at: {output_path}")
+print(f"File size: {os.path.getsize(output_path)} bytes")
