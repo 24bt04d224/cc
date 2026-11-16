@@ -1551,7 +1551,7 @@ const ALL_QUESTIONS_POOL = [
     unit: 'Unit 3: Architecture',
     marks: '10 Marks',
     type: 'Comprehensive Architecture',
-    question: 'Cloud Deployment Models & Enterprise Migration: Compare Public, Private, Hybrid (Cloud Bursting & Direct Connect), Community Clouds, Multi-Cloud Strategy, and detail the Gartner 6 R\'s Migration Framework.',
+    question: `Cloud Deployment Models & Enterprise Migration: Compare Public, Private, Hybrid (Cloud Bursting & Direct Connect), Community Clouds, Multi-Cloud Strategy, and detail the Gartner 6 R's Migration Framework.`,
     answerHtml: `<strong>Model Answer & Master Blueprint:</strong><br>
     <strong>1. The Four Primary Cloud Deployment Models:</strong>
     <ul>
@@ -1571,7 +1571,7 @@ const ALL_QUESTIONS_POOL = [
       <li><strong>Retain:</strong> Keep applications on-premise due to hardware dependencies or recent capital investments.</li>
       <li><strong>Retire:</strong> Identify and decommission obsolete or redundant applications, saving 10–20% IT budget.</li>
     </ol>`,
-    tip: 'Score breakdown: 3M Definitions & characteristics of 4 models; 2M Hybrid Cloud Bursting & Direct Connect; 2M Multi-Cloud drivers & data residency; 2M Gartner 6 R\'s Migration framework; 1M 10-parameter comparative matrix.',
+    tip: `Score breakdown: 3M Definitions & characteristics of 4 models; 2M Hybrid Cloud Bursting & Direct Connect; 2M Multi-Cloud drivers & data residency; 2M Gartner 6 R's Migration framework; 1M 10-parameter comparative matrix.`,
     googleQuery: 'Cloud Deployment Models Public Private Hybrid Community Diagram',
     markCat: '10m',
     unitKey: 'unit3'

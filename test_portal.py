@@ -91,4 +91,20 @@ for q_text in u45_expected:
     assert q_text in html, f"Missing guaranteed question in index.html: {q_text}"
 
 print(f"All {len(u45_expected)} Units 4 & 5 Guaranteed Questions verified in index.html!")
+
+# JavaScript Syntax Check with Node
+import re, subprocess
+scripts = re.findall(r'<script(?:\s+[^>]*)?>(.*?)</script>', html, re.DOTALL | re.IGNORECASE)
+assert len(scripts) > 0, "No script tag found in index.html"
+for i, s in enumerate(scripts):
+    tmp_js = f"_temp_check_{i}.js"
+    with open(tmp_js, 'w', encoding='utf-8') as out:
+        out.write(s)
+    res = subprocess.run(['node', '--check', tmp_js], capture_output=True, text=True)
+    import os
+    if os.path.exists(tmp_js):
+        os.remove(tmp_js)
+    assert res.returncode == 0, f"JavaScript syntax error in script {i}:\n{res.stderr}"
+
+print(f"All {len(scripts)} embedded JavaScript blocks passed zero-error Node.js syntax validation!")
 print('All 3 Exam Power Modes, Dropdowns, Responsive & Quality assertions PASSED!')
