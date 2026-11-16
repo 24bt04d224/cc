@@ -1999,30 +1999,83 @@ import urllib.parse
 import json
 
 def generate_u45_overview_card():
-    """Generates the highlight banner for the Overview tab."""
-    return """
+    """Generates the highlight banner and full 21 questions directly on the Overview / Home tab."""
+    # Build list of 21 quick question accordions for immediate on-page reading
+    quick_items = []
+    for q in U45_DATA:
+        encoded_query = urllib.parse.quote(q['googleQuery'])
+        tab_jump = 'unit4' if q['unit'] == 'Unit 4' else 'unit5'
+        q_item = f"""
+      <div class="accordion-item" data-marks="{q['markCat']}" data-u45="true" id="home-q-{q['id']}">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <span>
+            <span class="badge badge-priority" style="margin-right: 0.4rem; font-size: 0.72rem;">🔥 {q['userNumber']}</span>
+            <strong>[{q['marks']}]</strong> {q['question']}
+          </span>
+          <span class="accordion-icon">▼</span>
+        </div>
+        <div class="accordion-content">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem;">
+            <span class="badge badge-accent">{q['unitTitle']}</span>
+            <span class="badge">Mark Weightage: {q['marks']}</span>
+            <a href="https://www.google.com/search?tbm=isch&q={encoded_query}" target="_blank" rel="noopener" class="btn btn-sm">
+              <span>🔍 View Diagram on Google Images</span>
+            </a>
+          </div>
+          {q['answerHtml']}
+          <div style="display: flex; gap: 0.5rem; margin-top: 1.25rem; flex-wrap: wrap; padding-top: 0.75rem; border-top: 1px solid var(--border-color);">
+            <a href="https://www.google.com/search?tbm=isch&q={encoded_query}" target="_blank" rel="noopener" class="btn btn-sm">
+              <span>🔍 Search Diagrams on Google</span>
+              <span class="ext-icon">↗</span>
+            </a>
+            <button class="btn btn-sm btn-primary" onclick="switchTab('{tab_jump}')">
+              <span>📖 Open Full {q['unit']} Theory Notes</span>
+            </button>
+          </div>
+        </div>
+      </div>"""
+        quick_items.append(q_item)
+
+    quick_items_html = "\n".join(quick_items)
+
+    return f"""
   <!-- Guaranteed Unit 4 & 5 Blueprint Card -->
-  <div class="topic-card" style="border-color: rgba(239, 68, 68, 0.5); background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(249, 115, 22, 0.08));">
-    <div class="topic-header">
-      <div class="topic-title" style="color: var(--danger); display: flex; align-items: center; gap: 0.5rem;">
-        <span>🔥</span>
-        <span>Units 4 & 5 Guaranteed Exam Questions (21 High-Yield Blueprint Questions)</span>
+  <div class="topic-card" style="border: 2px solid var(--danger); background: linear-gradient(135deg, rgba(239, 68, 68, 0.08), rgba(249, 115, 22, 0.05));" id="u45-home-section">
+    <div class="topic-header" style="border-bottom: 1px solid rgba(239, 68, 68, 0.3); padding-bottom: 0.75rem; margin-bottom: 1rem;">
+      <div>
+        <div class="topic-title" style="color: var(--danger); font-size: 1.3rem; display: flex; align-items: center; gap: 0.5rem;">
+          <span>🔥</span>
+          <span>Units 4 & 5 Guaranteed Exam Questions & Model Answers (21 Questions)</span>
+        </div>
+        <p style="color: var(--text-secondary); margin: 0.35rem 0 0 0; font-size: 0.9rem;">
+          <strong>50% Total Exam Marks (Units 4 & 5).</strong> Complete university model answers right here on the home page! Click any question below to expand its model answer, or use the buttons to expand all:
+        </p>
       </div>
-      <span class="badge badge-priority">50% Total Marks</span>
+      <span class="badge badge-priority" style="font-size: 0.85rem; padding: 0.4rem 0.8rem;">100% Exam Blueprint</span>
     </div>
-    <p style="color: var(--text-secondary); margin-bottom: 1rem; font-size: 0.92rem;">
-      Official examination blueprint containing the <strong>exact 21 questions</strong> from Unit 4 (Virtualization Technologies - 14 Questions) and Unit 5 (Security, Privacy & Governance - 7 Questions). Every question includes a full university model answer, diagrams, marking schemes, and 4-point blueprints.
-    </p>
-    <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
-      <button class="btn btn-primary" style="background: linear-gradient(135deg, #ef4444, #f97316); border-color: #ef4444;" onclick="switchTab('qbank'); filterQBank('u45', null);">
-        <span>📝 Open 21 Model Answers (QBank) &rarr;</span>
+
+    <!-- Quick Action Controls -->
+    <div style="display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 1.25rem; align-items: center;">
+      <button class="btn btn-primary" style="background: linear-gradient(135deg, #ef4444, #f97316); border-color: #ef4444;" onclick="toggleHomeAccordions(true)">
+        <span>📖 Expand All 21 Model Answers</span>
       </button>
+      <button class="btn" onclick="toggleHomeAccordions(false)">
+        <span>📁 Collapse All</span>
+      </button>
+      <a href="unit4_5_imp_questions.html" class="btn" style="border-color: var(--accent); color: var(--accent);">
+        <span>📄 Open Standalone Document Version &rarr;</span>
+      </a>
       <button class="btn" onclick="switchTab('imp-topics'); filterImpCards('u45', null);">
-        <span>⭐ View 21 IMP Blueprint Cards &rarr;</span>
+        <span>⭐ View 21 Blueprint Cards &rarr;</span>
       </button>
       <button class="btn" onclick="switchTab('random-questions'); setRouletteFilter('unit45', null);">
         <span>❓ Practice in Question Roulette &rarr;</span>
       </button>
+    </div>
+
+    <!-- 21 Questions Accordion List Directly on Home Page -->
+    <div id="homeU45QuestionsList">
+      {quick_items_html}
     </div>
   </div>
 """
@@ -2166,4 +2219,182 @@ def generate_u45_js_roulette_items():
         }
         roulette_items.append(item)
     return roulette_items
+
+def generate_standalone_u45_page():
+    """Generates a standalone, dedicated single-page HTML file containing all 21 questions."""
+    from parts_css import CSS_CODE
+    
+    # Table of contents items
+    toc_u4 = []
+    toc_u5 = []
+    for q in U45_DATA:
+        toc_item = f'<li><a href="#{q["id"]}" style="color: var(--accent); text-decoration: none;"><strong>{q["userNumber"]} [{q["marks"]}]:</strong> {q["shortTitle"]}</a></li>'
+        if q['unit'] == 'Unit 4':
+            toc_u4.append(toc_item)
+        else:
+            toc_u5.append(toc_item)
+            
+    toc_u4_html = "\n".join(toc_u4)
+    toc_u5_html = "\n".join(toc_u5)
+    
+    # Full questions blocks
+    body_blocks = []
+    for q in U45_DATA:
+        encoded_query = urllib.parse.quote(q['googleQuery'])
+        blueprint_lis = "".join([f"<li>{b}</li>" for b in q['blueprint']])
+        
+        block = f"""
+    <!-- QUESTION {q['userNumber']} -->
+    <article class="topic-card" id="{q['id']}" style="margin-bottom: 2rem; border-left: 4px solid var(--danger);">
+      <div class="topic-header" style="border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem; margin-bottom: 1rem;">
+        <div>
+          <div style="display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.4rem; flex-wrap: wrap;">
+            <span class="badge badge-priority">{q['unit']} · {q['userNumber']}</span>
+            <span class="badge badge-accent">Weightage: {q['marks']}</span>
+            <span class="badge" style="background: var(--danger-bg); color: var(--danger); font-weight: 700;">100% Exam Guaranteed</span>
+          </div>
+          <h2 style="font-size: 1.25rem; color: var(--text-primary); margin: 0; line-height: 1.35;">
+            {q['question']}
+          </h2>
+        </div>
+      </div>
+
+      <!-- Rapid 4-Point Blueprint -->
+      <div class="def-box" style="margin-bottom: 1rem;">
+        <strong>🎯 4-Point Exam Answer Blueprint:</strong>
+        <ul style="margin: 0.35rem 0 0 1.2rem; font-size: 0.88rem; line-height: 1.5;">
+          {blueprint_lis}
+        </ul>
+      </div>
+
+      <!-- Intuitive Analogy -->
+      <div class="tip-box" style="margin-bottom: 1.25rem;">
+        <strong>💡 Real-World Analogy:</strong> {q['analogy']}
+      </div>
+
+      <!-- Full University Model Answer -->
+      <div class="model-answer-section" style="padding: 1rem 0; border-top: 1px dashed var(--border-color);">
+        <h3 style="color: var(--success); font-size: 1.1rem; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.4rem;">
+          <span>✔️</span> Full University Model Answer & Solution
+        </h3>
+        {q['answerHtml']}
+      </div>
+
+      <!-- Action Bar -->
+      <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1.25rem; padding-top: 0.75rem; border-top: 1px solid var(--border-color);">
+        <a href="https://www.google.com/search?tbm=isch&q={encoded_query}" target="_blank" rel="noopener" class="btn btn-sm">
+          <span>🔍 View Diagram on Google Images</span>
+          <span class="ext-icon">↗</span>
+        </a>
+        <a href="#toc" class="btn btn-sm">
+          <span>⬆️ Back to Table of Contents</span>
+        </a>
+        <a href="index.html#qbank" class="btn btn-sm btn-primary">
+          <span>🌐 Open in Full Portal</span>
+        </a>
+      </div>
+    </article>
+"""
+        body_blocks.append(block)
+
+    full_body_html = "\n".join(body_blocks)
+
+    page_html = f"""<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Units 4 & 5 Guaranteed Exam Questions & Model Answers — BTCS701F (GSFC University)</title>
+  <style>
+{CSS_CODE}
+  body {{
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 1rem;
+  }}
+  header {{
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }}
+  </style>
+</head>
+<body>
+
+  <!-- Top Sticky Header -->
+  <header style="margin-bottom: 1.5rem; border-radius: 12px;">
+    <div class="header-left">
+      <a href="index.html" class="brand" style="text-decoration: none;">
+        <div class="brand-logo">CC</div>
+        <div class="brand-text">
+          <h1><span>Units 4 & 5 Guaranteed Questions</span></h1>
+          <p>GSFC University · BTCS701F Cloud Computing · 21 Master Solutions</p>
+        </div>
+      </a>
+    </div>
+    <div class="header-controls">
+      <a href="index.html" class="btn btn-primary">
+        <span>🏠 Main Portal Home</span>
+      </a>
+      <button class="btn btn-icon" onclick="toggleTheme()" title="Toggle Dark/Light Mode">🌙</button>
+      <button class="btn btn-print-hide" onclick="window.print()" title="Print / Save PDF">🖨️ Print PDF</button>
+    </div>
+  </header>
+
+  <!-- Hero Header -->
+  <div class="hero-banner" style="border-color: rgba(239, 68, 68, 0.5); background: linear-gradient(135deg, rgba(239, 68, 68, 0.12), rgba(249, 115, 22, 0.08)); margin-bottom: 2rem;">
+    <div class="hero-header">
+      <div class="hero-title" style="color: var(--danger);">🔥 21 Guaranteed Examination Questions & Complete Answers</div>
+      <div class="hero-badge-group">
+        <span class="badge badge-priority">50% Total Course Marks</span>
+        <span class="badge badge-accent">Unit 4 (14 Qs)</span>
+        <span class="badge badge-accent">Unit 5 (7 Qs)</span>
+      </div>
+    </div>
+    <p class="hero-desc">
+      This dedicated standalone document provides the complete, unabridged model answers for all 21 guaranteed questions curated from your GSFC University syllabus. Includes diagrams, marking schemes, formulas, and comparison matrices.
+    </p>
+  </div>
+
+  <!-- Table of Contents -->
+  <div class="topic-card" id="toc" style="margin-bottom: 2rem;">
+    <div class="topic-header">
+      <div class="topic-title">📑 Quick Jump Index (All 21 Questions)</div>
+      <span class="badge">Click to Jump</span>
+    </div>
+    <div class="grid-2">
+      <div class="subcard">
+        <h4 style="color: var(--accent); margin-bottom: 0.5rem;">Unit 4: Virtualization (14 Questions)</h4>
+        <ol style="margin-left: 1.2rem; font-size: 0.88rem; line-height: 1.6;">
+          {toc_u4_html}
+        </ol>
+      </div>
+      <div class="subcard">
+        <h4 style="color: var(--danger); margin-bottom: 0.5rem;">Unit 5: Security & Governance (7 Questions)</h4>
+        <ol style="margin-left: 1.2rem; font-size: 0.88rem; line-height: 1.6;">
+          {toc_u5_html}
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- All 21 Questions Content -->
+  <main>
+    {full_body_html}
+  </main>
+
+  <script>
+    let currentTheme = localStorage.getItem('cc_theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    function toggleTheme() {{
+      currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', currentTheme);
+      localStorage.setItem('cc_theme', currentTheme);
+    }}
+  </script>
+</body>
+</html>
+"""
+    return page_html
+
 

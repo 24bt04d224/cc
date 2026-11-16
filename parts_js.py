@@ -712,6 +712,20 @@ function toggleAllAccordions() {
   });
 }
 
+function toggleHomeAccordions(open) {
+  const container = document.getElementById('homeU45QuestionsList');
+  if (!container) return;
+  container.querySelectorAll('.accordion-header').forEach(h => {
+    if (open) {
+      h.classList.add('open');
+      h.nextElementSibling.classList.add('open');
+    } else {
+      h.classList.remove('open');
+      h.nextElementSibling.classList.remove('open');
+    }
+  });
+}
+
 function filterQBank(markFilter, btn) {
   document.querySelectorAll('.accordion-item').forEach(item => {
     const isU45 = item.getAttribute('data-u45') === 'true';

@@ -11,7 +11,7 @@ from parts_comparisons import TAB_COMPARISONS_HTML
 from parts_quiz_flashcards import TAB_FLASHCARDS_HTML, TAB_QUIZ_HTML
 from parts_qbank import TAB_QBANK_HTML
 from parts_power_modes import TAB_RANDOM_TOPICS_HTML, TAB_IMP_TOPICS_HTML, TAB_RANDOM_QUESTIONS_HTML
-from parts_u45_guaranteed import generate_u45_overview_card
+from parts_u45_guaranteed import generate_u45_overview_card, generate_standalone_u45_page
 from parts_js import JS_CODE
 
 _RAW_OVERVIEW_HTML = """
@@ -428,3 +428,10 @@ with open(output_path, "w", encoding="utf-8") as f:
 
 print(f"Portal successfully built! File created at: {output_path}")
 print(f"File size: {os.path.getsize(output_path)} bytes")
+
+u45_output_path = os.path.join(os.path.dirname(__file__), "unit4_5_imp_questions.html")
+with open(u45_output_path, "w", encoding="utf-8") as f:
+    f.write(generate_standalone_u45_page())
+
+print(f"Standalone U4&5 page created at: {u45_output_path}")
+print(f"Standalone file size: {os.path.getsize(u45_output_path)} bytes")
