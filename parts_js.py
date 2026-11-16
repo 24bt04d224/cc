@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
+import json
+from parts_u45_guaranteed import generate_u45_js_roulette_items
 
-JS_CODE = """
+U45_JS_DATA = json.dumps(generate_u45_js_roulette_items())
+
+_RAW_JS_CODE = """
 // State Management
 let currentTheme = localStorage.getItem('cc_theme') || 'dark';
 document.documentElement.setAttribute('data-theme', currentTheme);
@@ -710,7 +714,12 @@ function toggleAllAccordions() {
 
 function filterQBank(markFilter, btn) {
   document.querySelectorAll('.accordion-item').forEach(item => {
-    if (markFilter === 'all' || item.getAttribute('data-marks') === markFilter) {
+    const isU45 = item.getAttribute('data-u45') === 'true';
+    if (markFilter === 'all') {
+      item.style.display = 'block';
+    } else if (markFilter === 'u45') {
+      item.style.display = isU45 ? 'block' : 'none';
+    } else if (item.getAttribute('data-marks') === markFilter) {
       item.style.display = 'block';
     } else {
       item.style.display = 'none';
@@ -1149,9 +1158,11 @@ function filterImpCards(filter, btn) {
   cards.forEach(card => {
     const tier = card.getAttribute('data-tier') || '';
     const marks = card.getAttribute('data-marks') || '';
+    const isU45 = card.getAttribute('data-u45') === 'true';
     let show = false;
     if (filter === 'all') show = true;
-    else if (filter === 'tier1' && tier === 'tier1') show = true;
+    else if (filter === 'u45' && (isU45 || tier === 'tier1')) show = true;
+    else if (filter === 'tier1' && (tier === 'tier1' || isU45)) show = true;
     else if (filter === 'tier2' && tier === 'tier2') show = true;
     else if (filter === 'tier3' && tier === 'tier3') show = true;
     else if (filter === '7m' && marks.includes('7m')) show = true;
@@ -1168,7 +1179,10 @@ function filterImpCards(filter, btn) {
 // ==============================================================================
 // 3) CROSS-CHAPTER QUESTION ROULETTE
 // ==============================================================================
+const U45_GUARANTEED_ITEMS = __U45_ITEMS_PLACEHOLDER__;
+
 const ALL_QUESTIONS_POOL = [
+  ...U45_GUARANTEED_ITEMS,
   // 2-Mark Definitions
   {
     unit: 'Unit 1: Introduction to Cloud',
@@ -1621,7 +1635,7 @@ function getFilteredQuestions() {
   if (currentRouletteFilter === '10m') return ALL_QUESTIONS_POOL.filter(q => q.markCat === '10m');
   if (currentRouletteFilter === '5m') return ALL_QUESTIONS_POOL.filter(q => q.markCat === '5m');
   if (currentRouletteFilter === '2m') return ALL_QUESTIONS_POOL.filter(q => q.markCat === '2m');
-  if (currentRouletteFilter === 'unit45') return ALL_QUESTIONS_POOL.filter(q => q.unitKey === 'unit4' || q.unitKey === 'unit5');
+  if (currentRouletteFilter === 'unit45') return ALL_QUESTIONS_POOL.filter(q => q.unitKey === 'unit4' || q.unitKey === 'unit5' || q.isU45);
   return ALL_QUESTIONS_POOL;
 }
 
@@ -1716,3 +1730,6 @@ window.addEventListener('DOMContentLoaded', () => {
   });
 });
 """
+
+JS_CODE = _RAW_JS_CODE.replace('__U45_ITEMS_PLACEHOLDER__', U45_JS_DATA)
+

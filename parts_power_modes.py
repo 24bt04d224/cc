@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from parts_u45_guaranteed import generate_u45_imp_cards_html
 
 # ==============================================================================
 # SECTION 1: RANDOM TOPICS GENERATOR
@@ -82,7 +83,7 @@ TAB_RANDOM_TOPICS_HTML = """
 # ==============================================================================
 # SECTION 2: IMP TOPICS (MOST IMPORTANT HIGH-YIELD CONCEPTS)
 # ==============================================================================
-TAB_IMP_TOPICS_HTML = """
+_RAW_TAB_IMP_TOPICS_HTML = """
 <div id="imp-topics" class="tab-pane">
   <div class="hero-banner" style="border-color: rgba(239, 68, 68, 0.4); background: linear-gradient(135deg, rgba(239, 68, 68, 0.12), rgba(168, 85, 247, 0.12));">
     <div class="hero-header">
@@ -101,7 +102,8 @@ TAB_IMP_TOPICS_HTML = """
 
   <!-- IMP Filter Chips -->
   <div class="filter-bar">
-    <button class="btn btn-primary" onclick="filterImpCards('all', this)">All IMPs (30)</button>
+    <button class="btn btn-primary" onclick="filterImpCards('all', this)">All IMPs</button>
+    <button class="btn" style="background: linear-gradient(135deg, #ef4444, #f97316); border-color: #ef4444; color: #fff; font-weight: 700;" onclick="filterImpCards('u45', this)">🔥 Units 4 & 5 Guaranteed (21 Qs)</button>
     <button class="btn" onclick="filterImpCards('tier1', this)">🔥 Tier 1: 50% Marks (Units 4 & 5)</button>
     <button class="btn" onclick="filterImpCards('tier2', this)">⭐ Tier 2: Unit 3 Architecture (20%)</button>
     <button class="btn" onclick="filterImpCards('tier3', this)">📌 Tier 3: Units 1 & 2 Foundations (30%)</button>
@@ -592,11 +594,11 @@ TAB_IMP_TOPICS_HTML = """
         <button class="btn btn-sm btn-primary" onclick="switchTab('qbank'); filterQBank('10m', null);">📝 View 10M Model Answer</button>
       </div>
     </div>
-</div>
-
   </div>
 </div>
 """
+
+TAB_IMP_TOPICS_HTML = _RAW_TAB_IMP_TOPICS_HTML.replace('<div class="imp-grid" id="impGrid">', '<div class="imp-grid" id="impGrid">\n' + generate_u45_imp_cards_html())
 
 # ==============================================================================
 # SECTION 3: RANDOM QUESTION ROULETTE (FROM ANY CHAPTER)
@@ -621,11 +623,11 @@ TAB_RANDOM_QUESTIONS_HTML = """
     <!-- Filters Bar -->
     <div class="filter-bar">
       <button class="btn btn-primary" onclick="setRouletteFilter('all', this)">All Marks (2M/5M/7M/10M)</button>
+      <button class="btn" style="background: linear-gradient(135deg, #ef4444, #f97316); border-color: #ef4444; color: #fff; font-weight: 700;" onclick="setRouletteFilter('unit45', this)">🔥 Units 4 & 5 Guaranteed (21 Qs)</button>
       <button class="btn" onclick="setRouletteFilter('7m', this)">7-Mark Questions</button>
       <button class="btn" onclick="setRouletteFilter('10m', this)">10-Mark Questions</button>
       <button class="btn" onclick="setRouletteFilter('5m', this)">5-Mark Questions</button>
       <button class="btn" onclick="setRouletteFilter('2m', this)">2-Mark Definitions</button>
-      <button class="btn" onclick="setRouletteFilter('unit45', this)">Units 4 & 5 Only (50%)</button>
     </div>
 
     <!-- Active Question Display Card -->

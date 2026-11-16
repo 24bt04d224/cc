@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
+from parts_u45_guaranteed import generate_u45_qbank_html
 
-TAB_QBANK_HTML = """
+_RAW_TAB_QBANK_HTML = """
 <div id="qbank" class="tab-pane">
   <div class="hero-banner">
     <div class="hero-header">
@@ -19,6 +20,7 @@ TAB_QBANK_HTML = """
 
   <div style="display: flex; gap: 0.5rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
     <button class="btn btn-primary" onclick="filterQBank('all', this)">All Questions</button>
+    <button class="btn" style="background: linear-gradient(135deg, #ef4444, #f97316); border-color: #ef4444; color: #fff; font-weight: 700;" onclick="filterQBank('u45', this)">🔥 Units 4 & 5 Guaranteed (21 Qs)</button>
     <button class="btn" onclick="filterQBank('2m', this)">2 Marks (Definitions)</button>
     <button class="btn" onclick="filterQBank('5m', this)">5 Marks (Concepts)</button>
     <button class="btn" onclick="filterQBank('7m', this)">7 Marks (Differences & Architecture)</button>
@@ -1211,3 +1213,5 @@ SELECT * FROM customer_orders; -- Impossible to see other tenant data even witho
   </div>
 </div>
 """
+
+TAB_QBANK_HTML = _RAW_TAB_QBANK_HTML.replace('<div id="qbankList">', '<div id="qbankList">\n' + generate_u45_qbank_html())

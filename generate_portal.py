@@ -11,9 +11,10 @@ from parts_comparisons import TAB_COMPARISONS_HTML
 from parts_quiz_flashcards import TAB_FLASHCARDS_HTML, TAB_QUIZ_HTML
 from parts_qbank import TAB_QBANK_HTML
 from parts_power_modes import TAB_RANDOM_TOPICS_HTML, TAB_IMP_TOPICS_HTML, TAB_RANDOM_QUESTIONS_HTML
+from parts_u45_guaranteed import generate_u45_overview_card
 from parts_js import JS_CODE
 
-OVERVIEW_HTML = """
+_RAW_OVERVIEW_HTML = """
 <div id="overview" class="tab-pane active">
   <div class="hero-banner">
     <div class="hero-header">
@@ -199,6 +200,9 @@ OVERVIEW_HTML = """
 </div>
 """
 
+OVERVIEW_HTML = _RAW_OVERVIEW_HTML.replace('<!-- High-Yield Exam Power Modes Card -->', generate_u45_overview_card() + '\n  <!-- High-Yield Exam Power Modes Card -->')
+
+
 FULL_HTML = f"""<!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
@@ -272,6 +276,14 @@ FULL_HTML = f"""<!DOCTYPE html>
           <span>IMP Topics (Top 30)</span>
         </div>
         <span class="badge badge-priority">100% Exam</span>
+      </div>
+
+      <div class="nav-item" id="nav-u45-guaranteed" onclick="switchTab('qbank'); filterQBank('u45', null);">
+        <div class="nav-item-left">
+          <span>🔥</span>
+          <span>Units 4 & 5 (21 Qs)</span>
+        </div>
+        <span class="badge badge-priority">50% Marks</span>
       </div>
 
       <div class="nav-item" id="nav-random-questions" onclick="switchTab('random-questions')">
