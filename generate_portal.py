@@ -72,7 +72,7 @@ OVERVIEW_HTML = """
     <p style="color: var(--text-secondary); margin-bottom: 1.15rem; font-size: 0.92rem;">
       Accelerate your revision with active recall and targeted exam-readiness tools. Choose your study mode:
     </p>
-    <div class="grid-3" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem;">
+    <div class="grid-3" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 0.85rem;">
       <div class="subcard" style="cursor: pointer; transition: transform 0.2s, border-color 0.2s; border-left: 4px solid var(--accent);" onclick="switchTab('random-topics')">
         <div style="font-size: 1.5rem; margin-bottom: 0.4rem;">🎲</div>
         <h4 style="color: var(--accent); margin-bottom: 0.4rem;">1. Random Topic Shuffler</h4>
@@ -221,7 +221,7 @@ FULL_HTML = f"""<!DOCTYPE html>
       <a href="#" class="brand" onclick="switchTab('overview'); return false;">
         <div class="brand-logo">CC</div>
         <div class="brand-text">
-          <h1>Cloud Computing (BTCS701F)</h1>
+          <h1><span>Cloud Computing</span> <span class="hide-mobile">(BTCS701F)</span></h1>
           <p>GSFC University · Master Exam Portal · 100% CC Aligned</p>
         </div>
       </a>
