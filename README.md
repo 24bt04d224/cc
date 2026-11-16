@@ -2,13 +2,16 @@
 
 [![GSFC University](https://img.shields.io/badge/University-GSFC%20University-blue)](https://www.gsfcuniversity.ac.in/)
 [![Course](https://img.shields.io/badge/Course-BTCS701F%3A%20Cloud%20Computing-emerald)](https://github.com/24bt04d224/cc)
-[![Live Portal](https://img.shields.io/badge/Live%20Website-GitHub%20Pages-brightgreen)](https://24bt04d224.github.io/cc/)
-[![MCQ Simulator](https://img.shields.io/badge/Exam%20MCQs-52%20Questions-purple)](https://24bt04d224.github.io/cc/)
-[![Flashcards](https://img.shields.io/badge/Revision%20Cards-36%20Cards-orange)](https://24bt04d224.github.io/cc/)
+[![Vercel Deployment](https://img.shields.io/badge/Live%20on-Vercel-black?logo=vercel)](https://cc1-black.vercel.app/)
+[![MCQ Simulator](https://img.shields.io/badge/Exam%20MCQs-52%20Questions-purple)](https://cc1-black.vercel.app/)
+[![Flashcards](https://img.shields.io/badge/Revision%20Cards-36%20Cards-orange)](https://cc1-black.vercel.app/)
 
 A comprehensive, self-contained Cloud Computing examination preparation and study portal built for **B.Tech Computer Science & Engineering (Semester VII)** students at **GSFC University**.
 
-🌐 **Live Website Link:** **[https://24bt04d224.github.io/cc/](https://24bt04d224.github.io/cc/)**
+🚀 **Official Live Website (Vercel):** **[https://cc1-black.vercel.app/](https://cc1-black.vercel.app/)**
+🔥 **Units 4 & 5 Guaranteed Questions (21 Qs):** **[https://cc1-black.vercel.app/unit4_5_imp_questions](https://cc1-black.vercel.app/unit4_5_imp_questions)**
+📱 **Instant Mobile Shortlink:** **[https://tinyurl.com/25vbsf4t](https://tinyurl.com/25vbsf4t)**
+
 
 ---
 
